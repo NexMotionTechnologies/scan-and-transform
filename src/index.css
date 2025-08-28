@@ -4,53 +4,67 @@
 
 /* Pampiri Design System - Modern Receipt Scanning App
 All colors are HSL for perfect theming support
+
+COLOR SPECTRUM GUIDE:
+- HSL Format: hue saturation% lightness%
+- Hue (0-360): 0°=Red, 30°=Orange, 60°=Yellow, 120°=Green, 180°=Cyan, 240°=Blue, 300°=Magenta
+- Saturation (0-100%): 0%=Gray, 100%=Vibrant
+- Lightness (0-100%): 0%=Black, 50%=Pure Color, 100%=White
+
+TO CHANGE COLORS:
+1. Keep saturation high (80-95%) for brand colors
+2. Adjust hue for different color families:
+   - Blues: 200-240° (current primary uses 220°)
+   - Oranges: 20-40° (current secondary uses 25°)
+   - Yellows: 40-60° (current accent uses 45°)
+3. Adjust lightness: 40-60% for main colors, 90-98% for backgrounds
 */
 
 @layer base {
   :root {
     /* Brand Colors */
-    --primary: 220 91% 50%;           /* Pampiri Blue #1E40AF */
-    --primary-foreground: 210 40% 98%;
-    --primary-glow: 220 91% 65%;      /* Lighter blue for glows */
+    --primary: 220 91% 50%;           /* Pampiri Blue #1E40AF - Hue:220°(Blue), Sat:91%, Light:50% */
+    --primary-foreground: 210 40% 98%; /* Light blue-tinted white for text on primary */
+    --primary-glow: 220 91% 65%;      /* Lighter blue for glows - Same hue, higher lightness */
     
-    --secondary: 25 95% 53%;          /* Pampiri Orange #FF8C00 */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 25 95% 53%;          /* Pampiri Orange #FF8C00 - Hue:25°(Orange), Sat:95%, Light:53% */
+    --secondary-foreground: #1d40af;  /* Blue text on orange (for contrast) */
     
-    --accent: 45 93% 47%;             /* Pampiri Yellow #F59E0B */
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 93% 47%;             /* Pampiri Yellow #F59E0B - Hue:45°(Yellow), Sat:93%, Light:47% */
+    --accent-foreground: 222.2 47.4% 11.2%; /* Dark blue-gray for text on yellow */
     
     /* Background System */
-    --background: 0 0% 100%;
-    --background-alt: 220 13% 97%;    /* Subtle gray background */
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 100%;          /* Pure white - Hue:0°, Sat:0%, Light:100% */
+    --background-alt: 220 13% 97%;    /* Subtle gray background - Blue-tinted, low sat, high light */
+    --foreground: 222.2 84% 4.9%;     /* Near black with blue tint - High sat, very low light */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;                /* Pure white cards */
+    --card-foreground: 222.2 84% 4.9%; /* Dark text on cards */
     
     /* Surface Colors */
-    --surface: 220 13% 98%;
-    --surface-hover: 220 13% 95%;
+    --surface: 220 13% 98%;           /* Very light blue-gray - Matches primary hue, low sat */
+    --surface-hover: 220 13% 95%;     /* Slightly darker on hover - Same hue, lower light */
     
     /* Interactive States */
-    --muted: 220 13% 95%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 91% 50%;
+    --muted: 220 13% 95%;             /* Muted backgrounds - Blue-tinted gray */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Medium gray for muted text */
+    --border: 220 13% 91%;            /* Border color - Blue-tinted, medium light */
+    --input: 220 13% 91%;             /* Input backgrounds - Same as border */
+    --ring: 220 91% 50%;              /* Focus rings - Same as primary */
     
     /* Semantic Colors */
-    --success: 25 95% 53%;            /* Orange as success color */
-    --success-foreground: 210 40% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 25 95% 53%;            /* Orange as success color - Same as secondary */
+    --success-foreground: 210 40% 98%; /* Light text on success */
+    --destructive: 0 84.2% 60.2%;     /* Red for errors - Hue:0°(Red), high sat, medium light */
+    --destructive-foreground: 210 40% 98%; /* Light text on destructive */
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 91% 50%), hsl(25 95% 53%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 91% 50%) 0%, hsl(25 95% 53%) 50%, hsl(45 93% 47%) 100%);
+    /* Gradients - Mix of brand colors */
+    --gradient-primary: linear-gradient(135deg, hsl(220 91% 50%), hsl(207, 44%, 49%));
+    --gradient-hero: linear-gradient(135deg, hsl(220, 38%, 58%) 0%, hsl(207, 43%, 45%) 50%, hsl(45 93% 47%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 13% 97%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(220 91% 50% / 0.3), hsl(25 95% 53% / 0.2));
+    --gradient-glow: linear-gradient(135deg, hsl(220 91% 50% / 0.3), hsla(224, 95%, 53%, 0.2));
     
-    /* Shadows & Effects */
+    /* Shadows & Effects - All use primary color with transparency */
     --shadow-sm: 0 2px 4px hsl(220 91% 50% / 0.08);
     --shadow-md: 0 4px 12px hsl(220 91% 50% / 0.12);
     --shadow-lg: 0 8px 25px hsl(220 91% 50% / 0.15);
@@ -63,59 +77,56 @@ All colors are HSL for perfect theming support
     
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar Colors - Neutral grays */
+    --sidebar-background: 0 0% 98%;           /* Near white - Hue:0°, Sat:0%, Light:98% */
+    --sidebar-foreground: 240 5.3% 26.1%;    /* Dark gray with blue tint */
+    --sidebar-primary: 240 5.9% 10%;         /* Very dark blue-gray */
+    --sidebar-primary-foreground: 0 0% 98%;  /* Light text on dark sidebar elements */
+    --sidebar-accent: 240 4.8% 95.9%;        /* Light blue-gray accent */
+    --sidebar-accent-foreground: 240 5.9% 10%; /* Dark text on light accent */
+    --sidebar-border: 220 13% 91%;           /* Border matches main border */
+    --sidebar-ring: 217.2 91.2% 59.8%;      /* Focus ring - bright blue */
   }
 
+  /* Dark Mode - Inverted lightness values, adjusted hues for better contrast */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 222.2 84% 4.9%;      /* Very dark blue-gray - Inverted from foreground */
+    --foreground: 210 40% 98%;         /* Light blue-white - Inverted from background */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;           /* Dark cards */
+    --card-foreground: 210 40% 98%;   /* Light text on dark cards */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;        /* Dark popovers */
+    --popover-foreground: 210 40% 98%; /* Light text on dark popovers */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 210 40% 98%;           /* Light primary in dark mode */
+    --primary-foreground: 222.2 47.4% 11.2%; /* Dark text on light primary */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;   /* Dark secondary */
+    --secondary-foreground: 210 40% 98%; /* Light text on dark secondary */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 217.2 32.6% 17.5%;       /* Dark muted backgrounds */
+    --muted-foreground: 215 20.2% 65.1%; /* Medium light text on dark muted */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 217.2 32.6% 17.5%;      /* Dark accent */
+    --accent-foreground: 210 40% 98%; /* Light text on dark accent */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;     /* Darker red for dark mode */
+    --destructive-foreground: 210 40% 98%; /* Light text on dark destructive */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 217.2 32.6% 17.5%;      /* Dark borders */
+    --input: 217.2 32.6% 17.5%;       /* Dark input backgrounds */
+    --ring: 212.7 26.8% 83.9%;        /* Light focus rings in dark mode */
+    
+    /* Dark Sidebar */
+    --sidebar-background: 240 5.9% 10%;      /* Very dark sidebar */
+    --sidebar-foreground: 240 4.8% 95.9%;    /* Light text in dark sidebar */
+    --sidebar-primary: 224.3 76.3% 48%;      /* Bright blue primary in dark sidebar */
+    --sidebar-primary-foreground: 0 0% 100%; /* White text on bright primary */
+    --sidebar-accent: 240 3.7% 15.9%;        /* Dark accent areas */
+    --sidebar-accent-foreground: 240 4.8% 95.9%; /* Light text on dark accent */
+    --sidebar-border: 240 3.7% 15.9%;        /* Dark borders */
+    --sidebar-ring: 217.2 91.2% 59.8%;       /* Bright focus rings */
   }
 }
 

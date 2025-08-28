@@ -3,6 +3,7 @@ import HowItWorks from '@/components/HowItWorks';
 import Features from '@/components/Features';
 import Pricing from '@/components/Pricing';
 import BetaSignup from '@/components/BetaSignup';
+import Footer from '@/components/footer';   
 
 const Index = () => {
   return (
