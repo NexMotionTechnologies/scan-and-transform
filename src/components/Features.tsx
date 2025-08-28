@@ -1,38 +1,39 @@
 import { useState, useEffect, useRef } from 'react';
+import { Camera, Brain, Zap, FileSpreadsheet, Edit3, Shield } from 'lucide-react';
 
 const features = [
   {
-    icon: "📸",
+    Icon: Camera,
     title: "Smart Camera",
     description: "Professional camera interface optimized for receipt scanning with auto-focus, lighting adjustment, and edge detection.",
     gradient: "from-primary to-primary-glow"
   },
   {
-    icon: "🤖", 
+    Icon: Brain, 
     title: "AI Text Recognition",
     description: "Advanced machine learning extracts text with 99% accuracy, even from crumpled, faded, or angled receipts.",
     gradient: "from-secondary to-primary"
   },
   {
-    icon: "⚡",
+    Icon: Zap,
     title: "Instant Processing", 
     description: "Get your receipts processed in seconds, not minutes. Real-time extraction with cloud-powered AI infrastructure.",
     gradient: "from-accent to-secondary"
   },
   {
-    icon: "📊",
+    Icon: FileSpreadsheet,
     title: "Multiple Export Formats",
     description: "Export to Excel, CSV, PDF, or Word formats. Compatible with QuickBooks, Xero, and all major accounting software.",
     gradient: "from-primary to-accent"
   },
   {
-    icon: "✏️",
+    Icon: Edit3,
     title: "Edit & Review",
     description: "Review and edit extracted text before exporting. Intelligent suggestions help ensure 100% accuracy for your records.",
     gradient: "from-secondary to-accent"
   },
   {
-    icon: "🔒",
+    Icon: Shield,
     title: "Enterprise Security",
     description: "Bank-level encryption, GDPR compliance, and secure cloud storage. Your financial data stays private and protected.",
     gradient: "from-accent to-primary"
@@ -115,7 +116,7 @@ const Features = () => {
                   {/* Icon */}
                   <div className="flex items-center justify-center mb-6">
                     <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
-                      <span className="text-2xl">{feature.icon}</span>
+                      <feature.Icon className="w-8 h-8 text-white" />
                     </div>
                   </div>
 

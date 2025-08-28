@@ -13,7 +13,7 @@ All colors are HSL for perfect theming support
     --primary-foreground: 210 40% 98%;
     --primary-glow: 220 91% 65%;      /* Lighter blue for glows */
     
-    --secondary: 175 84% 39%;         /* Pampiri Teal #10B981 */
+    --secondary: 25 95% 53%;          /* Pampiri Orange #FF8C00 */
     --secondary-foreground: 210 40% 98%;
     
     --accent: 45 93% 47%;             /* Pampiri Yellow #F59E0B */
@@ -39,16 +39,16 @@ All colors are HSL for perfect theming support
     --ring: 220 91% 50%;
     
     /* Semantic Colors */
-    --success: 175 84% 39%;
+    --success: 25 95% 53%;            /* Orange as success color */
     --success-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 91% 50%), hsl(175 84% 39%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 91% 50%) 0%, hsl(175 84% 39%) 50%, hsl(45 93% 47%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(220 91% 50%), hsl(25 95% 53%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 91% 50%) 0%, hsl(25 95% 53%) 50%, hsl(45 93% 47%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 13% 97%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(220 91% 50% / 0.3), hsl(175 84% 39% / 0.2));
+    --gradient-glow: linear-gradient(135deg, hsl(220 91% 50% / 0.3), hsl(25 95% 53% / 0.2));
     
     /* Shadows & Effects */
     --shadow-sm: 0 2px 4px hsl(220 91% 50% / 0.08);

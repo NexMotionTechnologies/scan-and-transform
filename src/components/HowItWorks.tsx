@@ -1,25 +1,26 @@
 import { useState, useEffect, useRef } from 'react';
+import { Camera, Brain, FileSpreadsheet } from 'lucide-react';
 
 const steps = [
   {
     number: "01",
     title: "Scan Receipt",
     description: "Simply take a photo of any receipt using your phone camera. Our advanced AI works with any lighting condition or angle.",
-    icon: "📱",
+    Icon: Camera,
     color: "from-primary to-primary-glow"
   },
   {
     number: "02", 
     title: "AI Extraction",
     description: "Our powerful AI instantly recognizes and extracts all text, amounts, dates, and merchant information with 99% accuracy.",
-    icon: "🤖",
+    Icon: Brain,
     color: "from-secondary to-primary"
   },
   {
     number: "03",
     title: "Export Data",
     description: "Get your organized data in Excel, CSV, PDF, or Word format. Ready for accounting software or expense tracking.",
-    icon: "📊",
+    Icon: FileSpreadsheet,
     color: "from-accent to-secondary"
   }
 ];
@@ -100,8 +101,8 @@ const HowItWorks = () => {
                   <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-lg`}>
                     <span className="text-2xl font-bold text-white">{step.number}</span>
                   </div>
-                  <div className="text-4xl animate-bounce-in" style={{ animationDelay: `${index * 100}ms` }}>
-                    {step.icon}
+                  <div className="w-16 h-16 bg-gradient-to-br from-white/10 to-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30 animate-bounce-in" style={{ animationDelay: `${index * 100}ms` }}>
+                    <step.Icon className="w-8 h-8 text-white" />
                   </div>
                 </div>
 

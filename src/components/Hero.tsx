@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Scan, FileText, Download, Zap } from 'lucide-react';
 import heroLogo from '@/assets/pampiri-hero-logo.png';
 import phoneMockup from '@/assets/phone-mockup-3d.png';
 
@@ -54,17 +55,19 @@ const Hero = () => {
             {/* Feature List */}
             <div className="space-y-4">
               {[
-                "✨ AI-powered text extraction with 99% accuracy",
-                "📊 Export to Excel, CSV, PDF formats instantly", 
-                "⚡ Process hundreds of receipts in minutes",
-                "🔒 Secure cloud storage with enterprise-grade encryption"
+                { Icon: Scan, text: "AI-powered text extraction with 99% accuracy" },
+                { Icon: FileText, text: "Export to Excel, CSV, PDF formats instantly" }, 
+                { Icon: Zap, text: "Process hundreds of receipts in minutes" },
+                { Icon: Download, text: "Secure cloud storage with enterprise-grade encryption" }
               ].map((feature, index) => (
                 <div 
                   key={index}
-                  className={`flex items-center space-x-3 transition-all duration-500 delay-${index * 100} ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}
+                  className={`flex items-center space-x-4 transition-all duration-500 delay-${index * 100} ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}
                 >
-                  <div className="w-2 h-2 bg-accent rounded-full animate-glow-pulse"></div>
-                  <span className="text-white/90">{feature}</span>
+                  <div className="w-10 h-10 bg-secondary/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20">
+                    <feature.Icon className="w-5 h-5 text-secondary" />
+                  </div>
+                  <span className="text-white/90 text-lg">{feature.text}</span>
                 </div>
               ))}
             </div>
@@ -120,16 +123,16 @@ const Hero = () => {
                 />
                 
                 {/* Floating UI Elements */}
-                <div className="absolute -top-8 -right-8 w-16 h-16 bg-success rounded-xl flex items-center justify-center animate-float shadow-lg">
-                  <span className="text-2xl">✓</span>
+                <div className="absolute -top-8 -right-8 w-16 h-16 bg-secondary rounded-xl flex items-center justify-center animate-float shadow-lg">
+                  <Scan className="w-8 h-8 text-white" />
                 </div>
                 
                 <div className="absolute -bottom-4 -left-6 w-20 h-12 bg-accent rounded-lg flex items-center justify-center animate-float-reverse shadow-lg">
-                  <span className="text-sm font-semibold text-accent-foreground">Excel</span>
+                  <FileText className="w-6 h-6 text-accent-foreground" />
                 </div>
                 
                 <div className="absolute top-1/2 -right-12 w-14 h-14 bg-primary/20 backdrop-blur-md rounded-full flex items-center justify-center animate-bounce border border-white/30">
-                  <span className="text-xl">📊</span>
+                  <Zap className="w-7 h-7 text-white" />
                 </div>
               </div>
             </div>

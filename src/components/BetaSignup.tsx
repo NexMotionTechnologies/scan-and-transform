@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { Zap, DollarSign, Target, Smartphone, PlayCircle } from 'lucide-react';
 
 const BetaSignup = () => {
   const [email, setEmail] = useState('');
@@ -64,16 +65,16 @@ const BetaSignup = () => {
           {/* Benefits Grid */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: "⚡", text: "Instant access to beta version" },
-              { icon: "💰", text: "50% discount on first year" },
-              { icon: "🎯", text: "Direct feedback to our team" }
+              { Icon: Zap, text: "Instant access to beta version" },
+              { Icon: DollarSign, text: "50% discount on first year" },
+              { Icon: Target, text: "Direct feedback to our team" }
             ].map((benefit, index) => (
               <div 
                 key={index}
                 className="flex items-center justify-center space-x-3 bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-4 animate-slide-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <span className="text-2xl">{benefit.icon}</span>
+                <benefit.Icon className="w-6 h-6 text-secondary" />
                 <span className="text-white/90 font-medium">{benefit.text}</span>
               </div>
             ))}
@@ -145,7 +146,7 @@ const BetaSignup = () => {
           {/* App Store Buttons Placeholder */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <div className="bg-white/10 backdrop-blur-md border border-white/30 rounded-2xl px-6 py-3 flex items-center space-x-3">
-              <span className="text-2xl">📱</span>
+              <Smartphone className="w-8 h-8 text-white" />
               <div className="text-left">
                 <div className="text-white/70 text-xs">Coming Soon to</div>
                 <div className="text-white font-semibold">App Store</div>
@@ -153,7 +154,7 @@ const BetaSignup = () => {
             </div>
             
             <div className="bg-white/10 backdrop-blur-md border border-white/30 rounded-2xl px-6 py-3 flex items-center space-x-3">
-              <span className="text-2xl">🤖</span>
+              <PlayCircle className="w-8 h-8 text-white" />
               <div className="text-left">
                 <div className="text-white/70 text-xs">Coming Soon to</div>
                 <div className="text-white font-semibold">Google Play</div>
