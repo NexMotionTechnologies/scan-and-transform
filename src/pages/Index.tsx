@@ -13,6 +13,7 @@ const Index = () => {
       <Features />
       <Pricing />
       <BetaSignup />
+      <Footer />
     </div>
   );
 };

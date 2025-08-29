@@ -1,3 +1,5 @@
+import logo from '@/assets/pampiri-hero-logo.png';
+
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-16">
@@ -6,7 +8,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <img src="src/assets/pampiri-hero-logo.png" className="w-10 h-10" alt="Pampiri Logo" />
+              <img src={logo} className="w-10 h-10" alt="Pampiri Logo" />
               <span className="text-2xl font-bold">Pampiri</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
