@@ -299,7 +299,7 @@ const PrivacyPolicy = () => {
                 <div className="space-y-2 text-muted-foreground">
                   <p className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-primary" />
-                    <strong>privacy@pampiri.co.za</strong>
+                    <strong>support@mypampiri.co.za</strong>
                   </p>
                   <p className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-secondary" />

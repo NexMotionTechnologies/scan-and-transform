@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <img src={logo} className="w-10 h-10" alt="Pampiri Logo" />
+              <img src={logo} className="w-10 h-10" alt="Pampiri Logo" loading="lazy" />
               <span className="text-2xl font-bold">Pampiri</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">

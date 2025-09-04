@@ -68,8 +68,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <p className="text-muted-foreground">privacy@pampiri.co.za</p>
-                    <p className="text-sm text-muted-foreground">For privacy and data protection inquiries</p>
+                    <p className="text-muted-foreground">support@mypampiri.co.za</p>
+                    <p className="text-sm text-muted-foreground">For support and general inquiries</p>
                   </div>
                 </div>
 

@@ -12,6 +12,7 @@ const BetaSignup = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -51,7 +52,6 @@ const BetaSignup = () => {
 
       setEmail('');
     } catch (error) {
-      console.error('Beta signup error:', error);
       toast({
         title: "Signup failed",
         description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
@@ -141,6 +141,7 @@ const BetaSignup = () => {
                   </>
                 )}
               </Button>
+              
             </form>
 
             <p className="text-white/70 text-sm mt-4">

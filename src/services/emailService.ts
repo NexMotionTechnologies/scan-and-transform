@@ -26,9 +26,30 @@ export class EmailService {
     }
 
     const templateParams = {
+      // EmailJS recipient parameters (multiple formats for compatibility)
+      to_email: email,
+      reply_to: email,
+      email: email,
       user_email: email,
-      to_name: email, // Add this if your template uses it
-      from_name: 'Pampiri Team', // Add this if your template uses it
+      
+      // Template content parameters
+      to_name: email.split('@')[0], // Extract name from email
+      from_name: 'Pampiri Team',
+      app_name: 'Pampiri',
+      company: 'NexMotion Technologies',
+      website_url: 'https://mypampiri.co.za',
+      support_email: 'support@mypampiri.co.za',
+      signup_date: new Date().toLocaleDateString(),
+      welcome_message: 'Welcome to the Pampiri Beta Program!',
+      next_steps: 'We\'ll review your application and send you download instructions within 2-3 business days.',
+      app_description: 'Pampiri transforms your receipts into organized digital data using AI-powered scanning. Perfect for businesses, accountants, and anyone who wants to streamline their document management.',
+      beta_benefits: [
+        '🎯 Exclusive early access to all features',
+        '💰 50% discount on your first year subscription', 
+        '📞 Direct line to our development team',
+        '🚀 Shape the future of receipt processing'
+      ].join('\n'),
+      download_expectation: 'Look out for an email from the Pampiri team with your beta download link within the next 2-3 business days.'
     };
 
     console.log('Sending email with params:', templateParams);

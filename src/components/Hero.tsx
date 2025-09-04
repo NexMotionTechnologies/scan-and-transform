@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Scan, FileText, Download, Zap, Menu, X } from 'lucide-react';
+import heroLogo from '@/assets/pampiri-hero-logo.png';
+import phoneMockup from '@/assets/phone-mockup-3d.png';
+import heroVideo from '@/assets/video.mp4';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,10 +24,10 @@ const Hero = () => {
           muted
           loop
           playsInline
+          preload="metadata"
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src="src/assets/video.mp4" type="video/mp4" />
-          <source src="/videos/hero-background.webm" type="video/webm" />
+          <source src={heroVideo} type="video/mp4" />
         </video>
       </div>
 
@@ -33,7 +36,7 @@ const Hero = () => {
         <div className="container mx-auto flex items-center justify-between">
           {/* Logo Placeholder */}
           <div className="flex items-center space-x-3">
-            <img src="src/assets/pampiri-hero-logo.png" className="w-10 h-10" alt="Pampiri Logo" />
+            <img src={heroLogo} className="w-10 h-10" alt="Pampiri Logo" />
             <span className="text-2xl font-bold text-white">Pampiri</span>
           </div>
 
@@ -61,7 +64,7 @@ const Hero = () => {
                 target?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Get Started
+              Join Beta
             </Button>
           </div>
 
@@ -100,7 +103,7 @@ const Hero = () => {
                   target?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Get Started
+                Join Beta
               </Button>
             </div>
           </div>
@@ -114,7 +117,7 @@ const Hero = () => {
             {/* Left Content */}
             <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="flex items-center space-x-4 mb-6">
-                <img src="src/assets/pampiri-hero-logo.png" className="w-20 h-20" alt="Pampiri Logo" />
+                <img src={heroLogo} className="w-20 h-20" alt="Pampiri Logo" />
                 <div>
                   <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
                     Pampiri
@@ -133,17 +136,17 @@ const Hero = () => {
               </h2>
 
               <p className="text-xl text-white/90 max-w-xl leading-relaxed">
-                Scan any receipt with your phone and get perfectly formatted Excel files in seconds. 
-                Say goodbye to manual data entry forever.
+                Transform your receipts into organized digital data using AI-powered scanning. 
+                Perfect for businesses, accountants, and anyone tired of manual data entry.
               </p>
 
               {/* Feature List */}
               <div className="space-y-4">
                 {[
-                  { Icon: Scan, text: "AI-powered text extraction with 99% accuracy" },
-                  { Icon: FileText, text: "Export to Excel, CSV, PDF formats instantly" }, 
-                  { Icon: Zap, text: "Process hundreds of receipts in minutes" },
-                  { Icon: Download, text: "Secure cloud storage with enterprise-grade encryption" }
+                  { Icon: Scan, text: "AI-powered text extraction with high accuracy" },
+                  { Icon: FileText, text: "Export to Excel, CSV, PDF formats" }, 
+                  { Icon: Zap, text: "Process multiple receipts quickly" },
+                  { Icon: Download, text: "Secure cloud storage and data protection" }
                 ].map((feature, index) => (
                   <div 
                     key={index}
@@ -167,7 +170,7 @@ const Hero = () => {
                     target?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
-                  <span>Start Free Trial</span>
+                  <span>Join Beta Program</span>
                   <div className="w-2 h-2 bg-orange-400 rounded-full group-hover:animate-bounce ml-2"></div>
                 </Button>
                 
@@ -190,7 +193,7 @@ const Hero = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
-                  <span className="text-white/70 text-sm">99.5% accuracy rate</span>
+                  <span className="text-white/70 text-sm">POPIA compliant</span>
                 </div>
               </div>
             </div>
@@ -201,7 +204,13 @@ const Hero = () => {
                 {/* Phone Mockup Image */}
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
                   <div className="w-80 mx-auto">
-                    <img src="src/assets/phone-mockup-3d.png" alt="Phone Mockup" className="w-full h-auto" />
+                    <img 
+                      src={phoneMockup} 
+                      alt="Pampiri mobile app interface showing receipt scanning and data extraction features" 
+                      className="w-full h-auto" 
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 </div>
                 
