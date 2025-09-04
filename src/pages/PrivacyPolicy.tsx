@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="min-h-screen" style={{
-      background: 'linear-gradient(135deg, #0a0a2e 0%, #16213e 50%, #1a0845 100%)',
+      background: 'linear-gradient(135deg, #36546dff 0%, #545c74ff 50%, #634f92ff 100%)',
       color: '#e0e0e0',
       fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
       lineHeight: '1.6',
@@ -306,3 +306,4 @@ const PrivacyPolicy = () => {
 };
 
 export default PrivacyPolicy;
+

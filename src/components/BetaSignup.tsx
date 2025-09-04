@@ -3,6 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Zap, DollarSign, Target, Smartphone, PlayCircle } from 'lucide-react';
+import { BetaService } from '@/services/betaService';
+import { AlternativeEmailService } from '@/services/alternativeEmailService';
+import { DebugService } from '@/services/debugService';
 
 const BetaSignup = () => {
   const [email, setEmail] = useState('');
@@ -11,8 +14,10 @@ const BetaSignup = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!email) {
+
+    const trimmedEmail = email.trim();
+
+    if (!trimmedEmail) {
       toast({
         title: "Email required",
         description: "Please enter your email address to join the beta.",
@@ -21,17 +26,40 @@ const BetaSignup = () => {
       return;
     }
 
+    if (!BetaService.validateEmail(trimmedEmail)) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      // Save to Firebase
+      await BetaService.signup(trimmedEmail);
+
+      // Send confirmation email
+      await AlternativeEmailService.sendBetaSignupEmail(trimmedEmail);
+
       toast({
         title: "Welcome to Pampiri Beta! 🎉",
         description: "Check your email for beta access instructions and exclusive updates.",
       });
+
       setEmail('');
+    } catch (error) {
+      console.error('Beta signup error:', error);
+      toast({
+        title: "Signup failed",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
