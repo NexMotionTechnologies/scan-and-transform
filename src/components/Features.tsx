@@ -64,7 +64,7 @@ const Features = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
+    <section id="features" ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" 
@@ -149,9 +149,9 @@ const Features = () => {
           </div>
           <div className="group">
             <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-primary mb-2 group-hover:animate-bounce">
-              10,000+
+              200+
             </div>
-            <p className="text-muted-foreground group-hover:text-foreground transition-colors">Receipts Processed</p>
+            <p className="text-muted-foreground group-hover:text-foreground transition-colors">Beta Testers Needed</p>
           </div>
           <div className="group">
             <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-primary mb-2 group-hover:animate-bounce">

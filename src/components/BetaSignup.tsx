@@ -63,7 +63,7 @@ const BetaSignup = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-hero relative overflow-hidden">
+    <section id="beta" className="py-24 bg-gradient-hero relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-float"></div>
@@ -158,7 +158,7 @@ const BetaSignup = () => {
                   </div>
                 ))}
               </div>
-              <span className="text-white/80 text-sm">2,500+ beta testers</span>
+              <span className="text-white/80 text-sm">200 beta testers needed</span>
             </div>
             
             <div className="flex items-center space-x-2">

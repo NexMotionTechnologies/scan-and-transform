@@ -13,7 +13,7 @@ const Hero = () => {
   const navItems = ['Home', 'How It Works', 'Features' ,'Pricing', 'Contact'];
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-black">
+    <section id="home" className="relative min-h-screen flex flex-col overflow-hidden bg-black">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <video
@@ -42,14 +42,25 @@ const Hero = () => {
             {navItems.map((item, index) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={`#${item.toLowerCase().replace(/\s+/g, '')}`}
                 className="text-white/80 hover:text-white transition-colors duration-200 font-medium relative group"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.getElementById(item.toLowerCase().replace(/\s+/g, ''));
+                  target?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 {item}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-200 group-hover:w-full"></span>
               </a>
             ))}
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200">
+            <Button 
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200"
+              onClick={() => {
+                const target = document.getElementById('beta');
+                target?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Get Started
             </Button>
           </div>
@@ -70,14 +81,25 @@ const Hero = () => {
               {navItems.map((item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${item.toLowerCase().replace(/\s+/g, '')}`}
                   className="block text-white/80 hover:text-white transition-colors duration-200 font-medium py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsMobileMenuOpen(false);
+                    const target = document.getElementById(item.toLowerCase().replace(/\s+/g, ''));
+                    target?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   {item}
                 </a>
               ))}
-              <Button className="w-full max-w-xs bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition-all duration-200">
+              <Button 
+                className="w-full max-w-xs bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition-all duration-200"
+                onClick={() => {
+                  const target = document.getElementById('beta');
+                  target?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Get Started
               </Button>
             </div>
@@ -138,7 +160,13 @@ const Hero = () => {
 
               {/* CTA Buttons */}
               <div className={`flex flex-col sm:flex-row gap-4 pt-6 transition-all duration-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ transitionDelay: '300ms' }}>
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 text-lg group">
+                <Button 
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 text-lg group"
+                  onClick={() => {
+                    const target = document.getElementById('beta');
+                    target?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
                   <span>Start Free Trial</span>
                   <div className="w-2 h-2 bg-orange-400 rounded-full group-hover:animate-bounce ml-2"></div>
                 </Button>
@@ -158,7 +186,7 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-8 opacity-75">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-white/70 text-sm">10,000+ receipts processed</span>
+                  <span className="text-white/70 text-sm">200 beta testers needed</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>

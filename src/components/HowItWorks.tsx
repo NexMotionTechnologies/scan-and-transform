@@ -49,7 +49,7 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-background-alt relative overflow-hidden">
+    <section id="howitworks" ref={sectionRef} className="py-24 bg-background-alt relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full" 

@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { ArrowLeft, Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,127 +27,197 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-gray-200 p-8">
-      <Link to="/" className="inline-block mb-8 px-6 py-3 bg-blue-600 rounded-full hover:bg-blue-700 transition">
-        ← Back to Pampiri
-      </Link>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Header */}
+      <div className="bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="relative z-10 container mx-auto px-4 py-12">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-white hover:text-white/80 transition-colors mb-8"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Back to Pampiri
+          </Link>
 
-      <h1 className="text-4xl font-bold mb-4 text-center">📞 Contact Us</h1>
-      <p className="text-center mb-12 text-lg">Get in touch with our team - we'd love to hear from you!</p>
-
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
-        <div className="space-y-8">
-          <div className="bg-white bg-opacity-10 rounded-lg p-6">
-            <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold">Email</h3>
-                <p>privacy@pampiri.co.za</p>
-                <p className="text-sm text-gray-400">For privacy and data protection inquiries</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">Phone</h3>
-                <p>+27 78 175 8732</p>
-                <p className="text-sm text-gray-400">Available during business hours</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">Office</h3>
-                <p>NexMotion Technologies</p>
-                <p>Johannesburg, South Africa</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">Business Hours</h3>
-                <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                <p>Saturday: 9:00 AM - 1:00 PM</p>
-                <p>Sunday: Closed</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white bg-opacity-10 rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-4">Why Choose Pampiri?</h3>
-            <ul className="list-disc list-inside space-y-2">
-              <li>AI-powered document processing</li>
-              <li>99% accuracy on clear documents</li>
-              <li>Multiple export formats</li>
-              <li>Secure and encrypted storage</li>
-              <li>POPIA compliant data handling</li>
-            </ul>
+          <div className="text-center text-white">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-4">Contact Us</h1>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
+              Get in touch with our team - we'd love to hear from you!
+            </p>
           </div>
         </div>
+      </div>
 
-        <form onSubmit={handleSubmit} className="bg-white bg-opacity-10 rounded-lg p-6 space-y-6">
-          <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="name" className="block mb-1 font-medium">Full Name *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full p-3 rounded bg-gray-800 text-white"
-                placeholder="Your full name"
-              />
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+          
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <div className="bg-card border border-border rounded-3xl p-8 shadow-card">
+              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+                <Mail className="w-6 h-6 text-primary" />
+                Get in Touch
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Email</h3>
+                    <p className="text-muted-foreground">privacy@pampiri.co.za</p>
+                    <p className="text-sm text-muted-foreground">For privacy and data protection inquiries</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-secondary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Phone</h3>
+                    <p className="text-muted-foreground">+27 78 175 8732</p>
+                    <p className="text-sm text-muted-foreground">Available during business hours</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Office</h3>
+                    <p className="text-muted-foreground">NexMotion Technologies</p>
+                    <p className="text-muted-foreground">Johannesburg, South Africa</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Business Hours</h3>
+                    <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                    <p className="text-muted-foreground">Saturday: 9:00 AM - 1:00 PM</p>
+                    <p className="text-muted-foreground">Sunday: Closed</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <label htmlFor="email" className="block mb-1 font-medium">Email Address *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full p-3 rounded bg-gray-800 text-white"
-                placeholder="your.email@example.com"
-              />
+
+            {/* Why Choose Pampiri */}
+            <div className="bg-card border border-border rounded-3xl p-8 shadow-card">
+              <h3 className="text-xl font-bold text-foreground mb-6">Why Choose Pampiri?</h3>
+              <ul className="space-y-3">
+                {[
+                  "AI-powered document processing",
+                  "99% accuracy on clear documents", 
+                  "Multiple export formats",
+                  "Secure and encrypted storage",
+                  "POPIA compliant data handling"
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-muted-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div>
-            <label htmlFor="subject" className="block mb-1 font-medium">Subject *</label>
-            <select
-              id="subject"
-              name="subject"
-              required
-              value={formData.subject}
-              onChange={handleInputChange}
-              className="w-full p-3 rounded bg-gray-800 text-white"
-            >
-              <option value="">Select a subject</option>
-              <option value="general">General Inquiry</option>
-              <option value="support">Technical Support</option>
-              <option value="billing">Billing Question</option>
-              <option value="privacy">Privacy Concern</option>
-              <option value="partnership">Partnership Opportunity</option>
-              <option value="other">Other</option>
-            </select>
+
+          {/* Contact Form */}
+          <div className="bg-card border border-border rounded-3xl p-8 shadow-card">
+            <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block mb-2 font-medium text-foreground">
+                    Full Name *
+                  </label>
+                  <Input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your full name"
+                    className="w-full"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block mb-2 font-medium text-foreground">
+                    Email Address *
+                  </label>
+                  <Input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="your.email@example.com"
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="subject" className="block mb-2 font-medium text-foreground">
+                  Subject *
+                </label>
+                <select
+                  id="subject"
+                  name="subject"
+                  required
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="w-full p-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                >
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="support">Technical Support</option>
+                  <option value="billing">Billing Question</option>
+                  <option value="privacy">Privacy Concern</option>
+                  <option value="partnership">Partnership Opportunity</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block mb-2 font-medium text-foreground">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Tell us how we can help you..."
+                  className="w-full p-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 rounded-lg transition-all duration-200"
+              >
+                Send Message
+              </Button>
+
+              <p className="text-center text-muted-foreground text-sm">
+                We typically respond within 24 hours during business days.
+              </p>
+            </form>
           </div>
-          <div>
-            <label htmlFor="message" className="block mb-1 font-medium">Message *</label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows={6}
-              value={formData.message}
-              onChange={handleInputChange}
-              className="w-full p-3 rounded bg-gray-800 text-white"
-              placeholder="Tell us how we can help you..."
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 py-3 rounded text-white font-semibold hover:bg-blue-700 transition"
-          >
-            Send Message
-          </button>
-          <p className="text-center text-gray-400 text-sm mt-2">
-            We typically respond within 24 hours during business days.
-          </p>
-        </form>
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,8 @@ import HowItWorks from '@/components/HowItWorks';
 import Features from '@/components/Features';
 import Pricing from '@/components/Pricing';
 import BetaSignup from '@/components/BetaSignup';
-import Footer from '@/components/footer';   
+import Footer from '@/components/footer';
+import ScrollToTop from '@/components/ScrollToTop';   
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <Pricing />
       <BetaSignup />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

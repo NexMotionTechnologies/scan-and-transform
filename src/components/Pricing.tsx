@@ -83,7 +83,7 @@ const Pricing = () => {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-gradient-card relative overflow-hidden">
+    <section id="pricing" className="py-24 bg-gradient-card relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
@@ -176,6 +176,10 @@ const Pricing = () => {
                     variant={plan.buttonVariant} 
                     size="lg"
                     className="w-full group/btn"
+                    onClick={() => {
+                      const target = document.getElementById('beta');
+                      target?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
                     <span>{plan.buttonText}</span>
                     {plan.name !== "Enterprise Plan" && (
@@ -196,7 +200,14 @@ const Pricing = () => {
           <p className="text-muted-foreground mb-4">
             Questions about pricing? Need a custom plan?
           </p>
-          <Button variant="ghost" className="group">
+          <Button 
+            variant="ghost" 
+            className="group"
+            onClick={() => {
+              const target = document.getElementById('beta');
+              target?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
             <span>Contact our team</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
