@@ -177,11 +177,15 @@ const Hero = () => {
                 <Button 
                   variant="outline"
                   className="border-2 border-white/30 bg-white/10 backdrop-blur-md text-white hover:bg-white/20 px-8 py-4 rounded-lg transition-all duration-200 text-lg group"
+                  onClick={() => {
+                    const target = document.getElementById('beta');
+                    target?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   <svg className="w-5 h-5 group-hover:animate-pulse mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M19 10a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v-2l-4.257-2.257A6 6 0 0111 7h4zm-5 6v2a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 00-1-1h-2a1 1 0 00-1 1z" />
                   </svg>
-                  Watch Demo
+                  Early Access
                 </Button>
               </div>
 
@@ -189,7 +193,7 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-8 opacity-75">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-white/70 text-sm">200 beta testers needed</span>
+                  <span className="text-white/70 text-sm">10 beta testers needed</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>

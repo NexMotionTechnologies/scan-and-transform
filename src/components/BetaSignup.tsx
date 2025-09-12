@@ -159,16 +159,7 @@ const BetaSignup = () => {
                   </div>
                 ))}
               </div>
-              <span className="text-white/80 text-sm">200 beta testers needed</span>
-            </div>
-            
-            <div className="flex items-center space-x-2">
-              <div className="flex">
-                {[1,2,3,4,5].map(i => (
-                  <div key={i} className="text-accent text-lg">⭐</div>
-                ))}
-              </div>
-              <span className="text-white/80 text-sm">4.9/5 rating</span>
+              <span className="text-white/80 text-sm">10 beta testers needed</span>
             </div>
           </div>
 

@@ -1,3 +1,11 @@
+# Robots.txt for Pampiri (NexMotion Technologies)
+# Document Processing Platform - https://mypampiri.co.za
+
+# Allow all search engines to crawl all content
+User-agent: *
+Allow: /
+
+# Specific crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +18,17 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Block sensitive areas (none currently)
+# User-agent: *
+# Disallow: /admin/
+# Disallow: /api/
+
+# Crawl-delay (optional - not needed for static site)
+# Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://mypampiri.co.za/sitemap.xml
+
+# Additional information
+# Contact: support@mypampiri.co.za
+# Last updated: 2025-09-12

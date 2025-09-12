@@ -86,6 +86,10 @@ The project uses Vite environment variables prefixed with `VITE_`:
 - ✅ Changed all email addresses to support@mypampiri.co.za
 - ✅ Updated domain references to mypampiri.co.za across all components
 - ✅ Verified email system works with real user signups
+- ✅ Changed "Watch Demo" button to "Early Access" with redirect to beta signup
+- ✅ Removed redundant "Help Center" link from footer (duplicate of Contact Us)
+- ✅ Updated beta tester count from 200 to 10 across Hero and BetaSignup components
+- ✅ Removed rating stars section from BetaSignup component
 
 **Current Project Status**:
 - **Landing Page**: Fully functional with all sections complete
