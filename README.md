@@ -1,73 +1,81 @@
-# Welcome to your Lovable project
+# Pampiri - AI-Powered Receipt & Document Scanner
 
-## Project info
+[![License](https://img.shields.io/badge/license-Proprietary-blue.svg)](LICENSE)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat&logo=vite&logoColor=FFD62E)
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
 
-**URL**: https://lovable.dev/projects/fe0165ca-bb1a-4236-8e63-553ffcf7c790
+**Pampiri** is a premium, AI-driven document scanning and extraction platform developed by **NexMotion Technologies**. It transforms physical receipts and invoices into structured, actionable data in seconds, ensuring seamless financial management for businesses and individuals.
 
-## How can I edit this code?
+## ✨ Core Features
 
-There are several ways of editing your application.
+- **🎯 Snap & Extract**: Intelligent edge detection and high-performance ODR for perfect captures.
+- **⚡ Batch Scanning**: Process an entire month’s paperwork in minutes with rapid-fire batch modes.
+- **🧠 21-Field AI Accuracy**: Automatically capture VAT, merchant info, line items, and totals with 99.5% precision.
+- **📊 Instant Export**: Seamlessly download data as Excel, CSV, or PDF, ready for QuickBooks, Xero, or custom workflows.
+- **🛡️ Enterprise Grade Security**: Full POPIA & GDPR compliance with on-device encryption.
+- **📱 Professional Mobile Experience**: Available on Google Play with a streamlined "Verify & Approve" interface.
 
-**Use Lovable**
+## 🎨 Design Philosophy
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/fe0165ca-bb1a-4236-8e63-553ffcf7c790) and start prompting.
+Pampiri features a **futuristic, premium aesthetic** designed to wow users:
+- **Color Palette**: Deep Space Black, Warm Amber Gold, Electric Teal, and Vibrant Purple.
+- **Glassmorphism**: Sleek, transparent UI elements with vibrant ambient glows.
+- **Dynamic Animations**: Smooth transitions and micro-interactions powered by Framer Motion and custom CSS.
+- **Responsive Layout**: Optimized for high-resolution displays and mobile devices alike.
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Technology Stack
 
-**Use your preferred IDE**
+- **Frontend**: React 18 with Vite
+- **Styling**: Tailwind CSS & Vanilla CSS
+- **Components**: shadcn-ui & Lucide Icons
+- **Language**: TypeScript
+- **State Management**: React Hooks
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+- Node.js (v18.0.0 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone <YOUR_GIT_URL>
+   ```
+
+2. Navigate to the project directory:
+   ```sh
+   cd scan-and-transform
+   ```
+
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+4. Start the development server:
+   ```sh
+   npm run dev
+   ```
+
+## 🏗️ Building for Production
+
+To create an optimized production build:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+The build artifacts will be stored in the `dist/` directory.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📄 License
 
-**Use GitHub Codespaces**
+Proprietary © [NexMotion Technologies](https://nexmotiontechnologies.co.za)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/fe0165ca-bb1a-4236-8e63-553ffcf7c790) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Developed with ❤️ by the NexMotion Technologies Team.

@@ -1,32 +1,44 @@
 import { useState, useEffect, useRef } from 'react';
-import { Camera, Brain, FileSpreadsheet } from 'lucide-react';
+import { Camera, Brain, FileSpreadsheet, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const steps = [
   {
-    number: "01",
-    title: "Scan Receipt",
-    description: "Simply take a photo of any receipt using your phone camera. Our advanced AI works with any lighting condition or angle.",
+    number: '01',
+    title: 'Scan Your Receipt',
+    description:
+      'Simply open Pampiri and point your camera at any receipt. Our advanced AI handles any lighting condition, angle, or receipt quality automatically.',
     Icon: Camera,
-    color: "from-primary to-primary-glow"
+    accentColor: 'hsl(32 98% 52%)',
+    glowColor: 'hsl(32 98% 52% / 0.25)',
+    borderColor: 'hsl(32 98% 52% / 0.35)',
+    bgColor: 'hsl(32 98% 52% / 0.06)',
   },
   {
-    number: "02", 
-    title: "AI Extraction",
-    description: "Our powerful AI instantly recognizes and extracts all text, amounts, dates, and merchant information with 99% accuracy.",
+    number: '02',
+    title: 'AI Extracts Data',
+    description:
+      'Our machine learning engine instantly identifies and extracts all text, amounts, dates, and merchant details with 99.5% accuracy — even from crumpled or faded receipts.',
     Icon: Brain,
-    color: "from-secondary to-primary"
+    accentColor: 'hsl(258 90% 68%)',
+    glowColor: 'hsl(258 90% 68% / 0.25)',
+    borderColor: 'hsl(258 90% 68% / 0.35)',
+    bgColor: 'hsl(258 90% 68% / 0.06)',
   },
   {
-    number: "03",
-    title: "Export Data",
-    description: "Get your organized data in Excel, CSV, PDF, or Word format. Ready for accounting software or expense tracking.",
+    number: '03',
+    title: 'Export & Organize',
+    description:
+      'Get your organized data as Excel, CSV, or PDF — ready for your accounting software, expense tracker, or financial records in seconds.',
     Icon: FileSpreadsheet,
-    color: "from-accent to-secondary"
-  }
+    accentColor: 'hsl(186 95% 42%)',
+    glowColor: 'hsl(186 95% 42% / 0.25)',
+    borderColor: 'hsl(186 95% 42% / 0.35)',
+    bgColor: 'hsl(186 95% 42% / 0.06)',
+  },
 ];
 
 const HowItWorks = () => {
-  const [visibleSteps, setVisibleSteps] = useState(new Set());
+  const [visibleSteps, setVisibleSteps] = useState(new Set<number>());
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -34,100 +46,188 @@ const HowItWorks = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const stepIndex = parseInt(entry.target.getAttribute('data-step') || '0');
-            setVisibleSteps(prev => new Set([...prev, stepIndex]));
+            const idx = parseInt(entry.target.getAttribute('data-step') || '0');
+            setVisibleSteps((prev) => new Set([...prev, idx]));
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.25 }
     );
 
-    const stepElements = sectionRef.current?.querySelectorAll('[data-step]');
-    stepElements?.forEach(el => observer.observe(el));
-
+    const els = sectionRef.current?.querySelectorAll('[data-step]');
+    els?.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="howitworks" ref={sectionRef} className="py-24 bg-background-alt relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-full" 
-             style={{
-               backgroundImage: `radial-gradient(circle at 25% 25%, hsl(var(--primary)) 2px, transparent 2px)`,
-               backgroundSize: '50px 50px'
-             }}>
-        </div>
-      </div>
+    <section
+      id="howitworks"
+      ref={sectionRef}
+      className="relative py-28 overflow-hidden"
+      style={{ background: 'hsl(225, 30%, 9%)' }}
+    >
+      {/* Background dot pattern */}
+      <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
+
+      {/* Ambient glow top */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-40 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse at top, hsl(32 98% 52% / 0.08) 0%, transparent 70%)',
+        }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-foreground">
-            How It
-            <span className="text-transparent bg-clip-text bg-gradient-primary"> Works</span>
+
+        {/* Section header */}
+        <div className="text-center mb-20">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
+            style={{
+              background: 'hsl(186 95% 42% / 0.08)',
+              border: '1px solid hsl(186 95% 42% / 0.25)',
+              color: 'hsl(186 95% 55%)',
+            }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'hsl(186 95% 42%)' }} />
+            Simple Process
+          </div>
+          <h2
+            className="text-4xl lg:text-6xl font-black mb-6 text-white"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            How It{' '}
+            <span className="text-gradient-teal">Works</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Transform your receipts into organized data in just three simple steps. 
-            No technical expertise required - anyone can do it.
+          <p
+            className="text-xl max-w-2xl mx-auto leading-relaxed"
+            style={{ color: 'hsl(215 20% 55%)' }}
+          >
+            From physical receipt to organized digital data in under 30 seconds.
+            No technical skills required.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* Steps */}
+        <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto relative">
+
+          {/* Connector lines (desktop only) */}
+          <div className="hidden lg:flex absolute top-16 left-0 right-0 items-center justify-center z-0 pointer-events-none px-[16%]">
+            <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, hsl(32 98% 52% / 0.4), hsl(258 90% 68% / 0.4))' }} />
+            <div className="w-2 h-2 rounded-full mx-2" style={{ background: 'hsl(258 90% 68%)' }} />
+            <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, hsl(258 90% 68% / 0.4), hsl(186 95% 42% / 0.4))' }} />
+          </div>
+
           {steps.map((step, index) => (
             <div
               key={index}
               data-step={index}
-              className={`relative group transition-all duration-700 delay-${index * 200} ${
-                visibleSteps.has(index) 
-                  ? 'animate-slide-up' 
-                  : 'opacity-0 translate-y-16'
-              }`}
+              className="relative group z-10"
+              style={{
+                opacity: visibleSteps.has(index) ? 1 : 0,
+                transform: visibleSteps.has(index) ? 'translateY(0)' : 'translateY(40px)',
+                transition: `opacity 0.7s ease ${index * 150}ms, transform 0.7s ease ${index * 150}ms`,
+              }}
             >
-              {/* Connection Line */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-20 left-full w-full h-1 z-10">
-                  <div className={`h-full bg-gradient-to-r ${step.color} opacity-30 rounded-full transform origin-left transition-transform duration-1000 delay-${(index + 1) * 300} ${
-                    visibleSteps.has(index + 1) ? 'scale-x-100' : 'scale-x-0'
-                  }`}></div>
-                </div>
-              )}
+              {/* Card */}
+              <div
+                className="relative h-full rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:-translate-y-2"
+                style={{
+                  background: step.bgColor,
+                  border: `1px solid ${step.borderColor}`,
+                  boxShadow: `0 4px 24px hsl(225 35% 4% / 0.4)`,
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 40px ${step.glowColor}, 0 4px 24px hsl(225 35% 4% / 0.4)`;
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 24px hsl(225 35% 4% / 0.4)`;
+                }}
+              >
+                {/* Background glow on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
+                  style={{ background: `radial-gradient(ellipse at top left, ${step.glowColor} 0%, transparent 60%)` }}
+                />
 
-              <div className="relative bg-card rounded-3xl p-8 shadow-card hover:shadow-3d transition-all duration-500 group-hover:-translate-y-2 border border-border/50">
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-5 rounded-3xl`}></div>
-                
-                {/* Step Number */}
-                <div className="relative flex items-center justify-between mb-6">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                    <span className="text-2xl font-bold text-white">{step.number}</span>
+                {/* Step number + icon row */}
+                <div className="flex items-start justify-between mb-8 relative z-10">
+                  {/* Large step number bg */}
+                  <span
+                    className="text-7xl font-black leading-none select-none pointer-events-none"
+                    style={{
+                      color: step.accentColor,
+                      opacity: 0.12,
+                      position: 'absolute',
+                      top: '-12px',
+                      right: '8px',
+                      fontFamily: "'Space Grotesk', sans-serif",
+                    }}
+                  >
+                    {step.number}
+                  </span>
+
+                  {/* Step pill */}
+                  <div
+                    className="px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
+                    style={{
+                      background: `${step.accentColor.replace(')', ' / 0.15)').replace('hsl(', 'hsl(')}`,
+                      color: step.accentColor,
+                      border: `1px solid ${step.borderColor}`,
+                    }}
+                  >
+                    Step {step.number}
                   </div>
-                  <div className="w-16 h-16 bg-gradient-to-br from-white/10 to-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30 animate-bounce-in" style={{ animationDelay: `${index * 100}ms` }}>
-                    <step.Icon className="w-8 h-8 text-white" />
+
+                  {/* Icon */}
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
+                    style={{
+                      background: step.accentColor,
+                      boxShadow: `0 4px 16px ${step.glowColor}`,
+                    }}
+                  >
+                    <step.Icon className="w-7 h-7 text-white" strokeWidth={2} />
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="relative space-y-4">
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                <div className="relative z-10 space-y-4">
+                  <h3
+                    className="text-2xl font-bold text-white group-hover:text-opacity-100 transition-colors"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="leading-relaxed text-base" style={{ color: 'hsl(215 20% 55%)' }}>
                     {step.description}
                   </p>
                 </div>
 
-                {/* Hover Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`}></div>
+                {/* Arrow connector for mobile */}
+                {index < steps.length - 1 && (
+                  <div className="lg:hidden flex justify-center mt-6">
+                    <ArrowRight className="w-5 h-5 rotate-90" style={{ color: step.accentColor }} />
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* Bottom indicator */}
         <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-2 bg-card border border-border rounded-full px-6 py-3 shadow-card">
-            <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-            <span className="text-muted-foreground">Ready in under 30 seconds</span>
+          <div
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full text-sm font-medium"
+            style={{
+              background: 'hsl(142 76% 45% / 0.08)',
+              border: '1px solid hsl(142 76% 45% / 0.25)',
+              color: 'hsl(142 76% 55%)',
+            }}
+          >
+            <CheckCircle2 className="w-4 h-4" />
+            Average processing time under 30 seconds
           </div>
         </div>
       </div>

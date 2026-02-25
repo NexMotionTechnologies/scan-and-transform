@@ -19,17 +19,17 @@ export class AlternativeEmailService {
         email: email,
         subject: 'New Beta Signup - Pampiri',
         message: `New beta signup from: ${email}\n\nPlease add this user to the beta testing list.`,
-        
+
         // Admin notification settings
         _subject: 'New Pampiri Beta Signup',
-        
+
         // User confirmation settings
         _replyto: email,
         _cc: email,
-        
+
         // Auto-response to user (if enabled in Formspree settings)
         _autoresponse: 'Thank you for signing up for Pampiri beta! We\'ve received your request and will contact you soon with access details.',
-        
+
         // Additional user data
         user_email: email,
         signup_date: new Date().toISOString(),
@@ -61,7 +61,7 @@ export class AlternativeEmailService {
           _to: email,
           _subject: 'Welcome to Pampiri Beta!',
           message: `Hi there!\n\nThank you for signing up for the Pampiri beta program. We're excited to have you on board!\n\n🎯 What's Next?\n- We'll review your application\n- You'll receive download instructions within 2-3 business days\n- Look out for an email from the Pampiri team\n\n📱 About Pampiri:\nPampiri transforms your receipts into organized digital data using AI-powered scanning. Perfect for businesses, accountants, and anyone who wants to streamline their document management.\n\n🔗 Stay Connected:\n- Website: https://mypampiri.co.za\n- Support: support@mypampiri.co.za\n\nThanks again for joining our beta program!\n\nBest regards,\nThe Pampiri Team\nNexMotion Technologies`,
-          
+
           _replyto: 'support@mypampiri.co.za',
           from_name: 'Pampiri Team',
           source: 'user-confirmation'
@@ -86,7 +86,7 @@ export class AlternativeEmailService {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: new URLSearchParams(formData as any).toString(),
+      body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
     });
 
     if (!response.ok) {
@@ -142,7 +142,7 @@ export class AlternativeEmailService {
       reply_to: email,
       email: email,
       user_email: email,
-      
+
       // Template content parameters
       to_name: email.split('@')[0], // Extract name from email
       from_name: 'Pampiri Team',
@@ -156,7 +156,7 @@ export class AlternativeEmailService {
       app_description: 'Pampiri transforms your receipts into organized digital data using AI-powered scanning. Perfect for businesses, accountants, and anyone who wants to streamline their document management.',
       beta_benefits: [
         '🎯 Exclusive early access to all features',
-        '💰 50% discount on your first year subscription', 
+        '💰 50% discount on your first year subscription',
         '📞 Direct line to our development team',
         '🚀 Shape the future of receipt processing'
       ].join('\n'),
@@ -172,18 +172,19 @@ export class AlternativeEmailService {
       );
 
       console.log('EmailJS Success:', result);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('EmailJS Error:', error);
 
+      const err = error as { text?: string };
       // Provide more specific error messages
-      if (error?.text?.includes('template')) {
+      if (err.text?.includes('template')) {
         throw new Error('Email template not found. Please check your EmailJS template ID.');
-      } else if (error?.text?.includes('service')) {
+      } else if (err.text?.includes('service')) {
         throw new Error('Email service not configured. Please check your EmailJS service ID.');
-      } else if (error?.text?.includes('The public key is invalid')) {
+      } else if (err.text?.includes('The public key is invalid')) {
         throw new Error('Invalid EmailJS public key. Please check your configuration.');
       } else {
-        throw new Error(`Email sending failed: ${error?.text || 'Unknown error'}`);
+        throw new Error(`Email sending failed: ${err.text || 'Unknown error'}`);
       }
     }
   }

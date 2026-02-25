@@ -2,131 +2,119 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Pampiri Design System - Modern Receipt Scanning App
-All colors are HSL for perfect theming support
+/* ============================================================
+   PAMPIRI DESIGN SYSTEM — FUTURISTIC PREMIUM DARK EDITION
+   Color Architecture: Warm Amber + Electric Teal + Deep Space
+   ============================================================ */
 
-COLOR SPECTRUM GUIDE:
-- HSL Format: hue saturation% lightness%
-- Hue (0-360): 0°=Red, 30°=Orange, 60°=Yellow, 120°=Green, 180°=Cyan, 240°=Blue, 300°=Magenta
-- Saturation (0-100%): 0%=Gray, 100%=Vibrant
-- Lightness (0-100%): 0%=Black, 50%=Pure Color, 100%=White
-
-TO CHANGE COLORS:
-1. Keep saturation high (80-95%) for brand colors
-2. Adjust hue for different color families:
-   - Blues: 200-240° (current primary uses 220°)
-   - Oranges: 20-40° (current secondary uses 25°)
-   - Yellows: 40-60° (current accent uses 45°)
-3. Adjust lightness: 40-60% for main colors, 90-98% for backgrounds
-*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Brand Colors */
-    --primary: 220 91% 50%;           /* Pampiri Blue #1E40AF - Hue:220°(Blue), Sat:91%, Light:50% */
-    --primary-foreground: 210 40% 98%; /* Light blue-tinted white for text on primary */
-    --primary-glow: 220 91% 65%;      /* Lighter blue for glows - Same hue, higher lightness */
-    
-    --secondary: 25 95% 53%;          /* Pampiri Orange #FF8C00 - Hue:25°(Orange), Sat:95%, Light:53% */
-    --secondary-foreground: #1d40af;  /* Blue text on orange (for contrast) */
-    
-    --accent: 45 93% 47%;             /* Pampiri Yellow #F59E0B - Hue:45°(Yellow), Sat:93%, Light:47% */
-    --accent-foreground: 222.2 47.4% 11.2%; /* Dark blue-gray for text on yellow */
-    
-    /* Background System */
-    --background: 0 0% 100%;          /* Pure white - Hue:0°, Sat:0%, Light:100% */
-    --background-alt: 220 13% 97%;    /* Subtle gray background - Blue-tinted, low sat, high light */
-    --foreground: 222.2 84% 4.9%;     /* Near black with blue tint - High sat, very low light */
+    /* ── PRIMARY BRAND: Warm Amber Gold (Logo-matched) ── */
+    --primary: 32 98% 52%;               /* #F97316 - Pampiri Amber */
+    --primary-foreground: 222 84% 5%;    /* Dark text on amber */
+    --primary-glow: 38 100% 62%;         /* Brighter amber for glows */
+    --primary-dim: 32 80% 42%;           /* Darker amber for depth */
 
-    --card: 0 0% 100%;                /* Pure white cards */
-    --card-foreground: 222.2 84% 4.9%; /* Dark text on cards */
-    
-    /* Surface Colors */
-    --surface: 220 13% 98%;           /* Very light blue-gray - Matches primary hue, low sat */
-    --surface-hover: 220 13% 95%;     /* Slightly darker on hover - Same hue, lower light */
-    
-    /* Interactive States */
-    --muted: 220 13% 95%;             /* Muted backgrounds - Blue-tinted gray */
-    --muted-foreground: 215.4 16.3% 46.9%; /* Medium gray for muted text */
-    --border: 220 13% 91%;            /* Border color - Blue-tinted, medium light */
-    --input: 220 13% 91%;             /* Input backgrounds - Same as border */
-    --ring: 220 91% 50%;              /* Focus rings - Same as primary */
-    
-    /* Semantic Colors */
-    --success: 25 95% 53%;            /* Orange as success color - Same as secondary */
-    --success-foreground: 210 40% 98%; /* Light text on success */
-    --destructive: 0 84.2% 60.2%;     /* Red for errors - Hue:0°(Red), high sat, medium light */
-    --destructive-foreground: 210 40% 98%; /* Light text on destructive */
-    
-    /* Gradients - Mix of brand colors */
-    --gradient-primary: linear-gradient(135deg, hsl(220 91% 50%), hsl(207, 44%, 49%));
-    --gradient-hero: linear-gradient(135deg, hsl(220, 38%, 58%) 0%, hsl(207, 43%, 45%) 50%, hsl(45 93% 47%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 13% 97%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(220 91% 50% / 0.3), hsla(224, 95%, 53%, 0.2));
-    
-    /* Shadows & Effects - All use primary color with transparency */
-    --shadow-sm: 0 2px 4px hsl(220 91% 50% / 0.08);
-    --shadow-md: 0 4px 12px hsl(220 91% 50% / 0.12);
-    --shadow-lg: 0 8px 25px hsl(220 91% 50% / 0.15);
-    --shadow-glow: 0 0 40px hsl(220 91% 50% / 0.3);
-    --shadow-card: 0 4px 20px hsl(220 91% 50% / 0.08);
-    
-    /* Animation & Transitions */
+    /* ── SECONDARY: Electric Teal (Futuristic contrast) ── */
+    --secondary: 186 95% 42%;            /* #05C2CC - Electric Teal */
+    --secondary-foreground: 222 84% 5%;  /* Dark text on teal */
+    --secondary-glow: 186 100% 55%;      /* Brighter teal for glows */
+
+    /* ── ACCENT: Electric Violet (Premium depth) ── */
+    --accent: 258 90% 68%;               /* #8B5CF6 - Electric Violet */
+    --accent-foreground: 0 0% 100%;      /* White text on violet */
+    --accent-glow: 258 100% 78%;         /* Brighter violet for glows */
+
+    /* ── BACKGROUNDS: Deep Space Dark ── */
+    --background: 225 35% 6%;            /* #08091A - Space Black */
+    --background-alt: 225 30% 9%;        /* #0D0F22 - Slightly lighter */
+    --background-surface: 225 28% 13%;   /* #141628 - Surface level */
+    --foreground: 210 40% 96%;           /* Near white */
+
+    /* ── CARDS & SURFACES ── */
+    --card: 222 30% 11%;                 /* #121526 - Dark card */
+    --card-foreground: 210 40% 96%;
+    --card-glass: 225 30% 14%;           /* Glassmorphism base */
+
+    /* ── INTERACTIVE STATES ── */
+    --muted: 225 25% 15%;
+    --muted-foreground: 215 20% 55%;     /* Muted text */
+    --border: 225 30% 18%;               /* Subtle dark border */
+    --border-glow: 32 98% 52% / 0.4;    /* Amber glow border */
+    --input: 225 30% 14%;
+    --ring: 32 98% 52%;
+
+    /* ── SEMANTIC COLORS ── */
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* ── GRADIENT SYSTEM ── */
+    --gradient-primary: linear-gradient(135deg, hsl(32 98% 52%), hsl(38 100% 62%));
+    --gradient-hero: linear-gradient(135deg, hsl(225 35% 6%) 0%, hsl(225 30% 10%) 50%, hsl(258 30% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(222 30% 11%), hsl(225 28% 14%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(32 98% 52% / 0.15) 0%, transparent 70%);
+    --gradient-teal-glow: radial-gradient(ellipse at center, hsl(186 95% 42% / 0.15) 0%, transparent 70%);
+    --gradient-amber-teal: linear-gradient(135deg, hsl(32 98% 52%), hsl(186 95% 42%));
+    --gradient-brand: linear-gradient(135deg, hsl(32 98% 52%) 0%, hsl(258 90% 68%) 50%, hsl(186 95% 42%) 100%);
+
+    /* ── SHADOWS ── */
+    --shadow-sm: 0 2px 8px hsl(225 35% 4% / 0.5);
+    --shadow-md: 0 4px 20px hsl(225 35% 4% / 0.6);
+    --shadow-lg: 0 8px 40px hsl(225 35% 4% / 0.7);
+    --shadow-amber: 0 0 30px hsl(32 98% 52% / 0.3), 0 0 60px hsl(32 98% 52% / 0.1);
+    --shadow-teal: 0 0 30px hsl(186 95% 42% / 0.3), 0 0 60px hsl(186 95% 42% / 0.1);
+    --shadow-card: 0 4px 20px hsl(225 35% 4% / 0.5), 0 0 0 1px hsl(225 30% 18%);
+    --shadow-glow: 0 0 40px hsl(32 98% 52% / 0.25);
+
+    /* ── ANIMATION TOKENS ── */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    --radius: 0.75rem;
 
-    /* Sidebar Colors - Neutral grays */
-    --sidebar-background: 0 0% 98%;           /* Near white - Hue:0°, Sat:0%, Light:98% */
-    --sidebar-foreground: 240 5.3% 26.1%;    /* Dark gray with blue tint */
-    --sidebar-primary: 240 5.9% 10%;         /* Very dark blue-gray */
-    --sidebar-primary-foreground: 0 0% 98%;  /* Light text on dark sidebar elements */
-    --sidebar-accent: 240 4.8% 95.9%;        /* Light blue-gray accent */
-    --sidebar-accent-foreground: 240 5.9% 10%; /* Dark text on light accent */
-    --sidebar-border: 220 13% 91%;           /* Border matches main border */
-    --sidebar-ring: 217.2 91.2% 59.8%;      /* Focus ring - bright blue */
+    --radius: 0.875rem;
+
+    /* ── SIDEBAR ── */
+    --sidebar-background: 225 35% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 32 98% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 30% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 225 30% 18%;
+    --sidebar-ring: 32 98% 52%;
   }
 
-  /* Dark Mode - Inverted lightness values, adjusted hues for better contrast */
   .dark {
-    --background: 222.2 84% 4.9%;      /* Very dark blue-gray - Inverted from foreground */
-    --foreground: 210 40% 98%;         /* Light blue-white - Inverted from background */
-
-    --card: 222.2 84% 4.9%;           /* Dark cards */
-    --card-foreground: 210 40% 98%;   /* Light text on dark cards */
-
-    --popover: 222.2 84% 4.9%;        /* Dark popovers */
-    --popover-foreground: 210 40% 98%; /* Light text on dark popovers */
-
-    --primary: 210 40% 98%;           /* Light primary in dark mode */
-    --primary-foreground: 222.2 47.4% 11.2%; /* Dark text on light primary */
-
-    --secondary: 217.2 32.6% 17.5%;   /* Dark secondary */
-    --secondary-foreground: 210 40% 98%; /* Light text on dark secondary */
-
-    --muted: 217.2 32.6% 17.5%;       /* Dark muted backgrounds */
-    --muted-foreground: 215 20.2% 65.1%; /* Medium light text on dark muted */
-
-    --accent: 217.2 32.6% 17.5%;      /* Dark accent */
-    --accent-foreground: 210 40% 98%; /* Light text on dark accent */
-
-    --destructive: 0 62.8% 30.6%;     /* Darker red for dark mode */
-    --destructive-foreground: 210 40% 98%; /* Light text on dark destructive */
-
-    --border: 217.2 32.6% 17.5%;      /* Dark borders */
-    --input: 217.2 32.6% 17.5%;       /* Dark input backgrounds */
-    --ring: 212.7 26.8% 83.9%;        /* Light focus rings in dark mode */
-    
-    /* Dark Sidebar */
-    --sidebar-background: 240 5.9% 10%;      /* Very dark sidebar */
-    --sidebar-foreground: 240 4.8% 95.9%;    /* Light text in dark sidebar */
-    --sidebar-primary: 224.3 76.3% 48%;      /* Bright blue primary in dark sidebar */
-    --sidebar-primary-foreground: 0 0% 100%; /* White text on bright primary */
-    --sidebar-accent: 240 3.7% 15.9%;        /* Dark accent areas */
-    --sidebar-accent-foreground: 240 4.8% 95.9%; /* Light text on dark accent */
-    --sidebar-border: 240 3.7% 15.9%;        /* Dark borders */
-    --sidebar-ring: 217.2 91.2% 59.8%;       /* Bright focus rings */
+    --background: 225 35% 6%;
+    --foreground: 210 40% 96%;
+    --card: 222 30% 11%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 30% 11%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 32 98% 52%;
+    --primary-foreground: 222 84% 5%;
+    --secondary: 186 95% 42%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 225 25% 15%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 258 90% 68%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 225 30% 18%;
+    --input: 225 30% 14%;
+    --ring: 32 98% 52%;
+    --sidebar-background: 225 35% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 32 98% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 30% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 225 30% 18%;
+    --sidebar-ring: 32 98% 52%;
   }
 }
 
@@ -135,7 +123,150 @@ TO CHANGE COLORS:
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', 'Space Grotesk', system-ui, sans-serif;
+    background-color: hsl(225, 35%, 6%);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  /* ── TEXT GRADIENTS ── */
+  .text-gradient-amber {
+    background: linear-gradient(135deg, hsl(32 98% 55%), hsl(38 100% 68%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(135deg, hsl(32 98% 58%) 0%, hsl(258 90% 72%) 50%, hsl(186 95% 50%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-teal {
+    background: linear-gradient(135deg, hsl(186 95% 50%), hsl(186 100% 65%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── GLASSMORPHISM ── */
+  .glass {
+    background: hsl(225 30% 14% / 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(225 30% 25% / 0.5);
+  }
+
+  .glass-amber {
+    background: hsl(32 98% 52% / 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(32 98% 52% / 0.25);
+  }
+
+  .glass-teal {
+    background: hsl(186 95% 42% / 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(186 95% 42% / 0.25);
+  }
+
+  /* ── GLOW EFFECTS ── */
+  .glow-amber {
+    box-shadow: 0 0 20px hsl(32 98% 52% / 0.4), 0 0 40px hsl(32 98% 52% / 0.15);
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 20px hsl(186 95% 42% / 0.4), 0 0 40px hsl(186 95% 42% / 0.15);
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 20px hsl(258 90% 68% / 0.4), 0 0 40px hsl(258 90% 68% / 0.15);
+  }
+
+  /* ── LOGO GLOW TREATMENT ── */
+  .logo-glow {
+    filter: drop-shadow(0 0 8px hsl(32 98% 52% / 0.6)) 
+            drop-shadow(0 0 20px hsl(32 98% 52% / 0.3));
+    transition: filter 0.3s ease;
+  }
+
+  .logo-glow:hover {
+    filter: drop-shadow(0 0 12px hsl(32 98% 52% / 0.9)) 
+            drop-shadow(0 0 30px hsl(186 95% 42% / 0.5))
+            drop-shadow(0 0 50px hsl(258 90% 68% / 0.3));
+  }
+
+  .logo-color-shift {
+    filter: drop-shadow(0 0 6px hsl(32 98% 52% / 0.5))
+            drop-shadow(0 0 15px hsl(38 100% 62% / 0.3))
+            saturate(1.2) brightness(1.05);
+  }
+
+  /* ── NEON BORDERS ── */
+  .border-amber-glow {
+    border-color: hsl(32 98% 52% / 0.4);
+    box-shadow: 0 0 10px hsl(32 98% 52% / 0.2), inset 0 0 10px hsl(32 98% 52% / 0.05);
+  }
+
+  .border-teal-glow {
+    border-color: hsl(186 95% 42% / 0.4);
+    box-shadow: 0 0 10px hsl(186 95% 42% / 0.2), inset 0 0 10px hsl(186 95% 42% / 0.05);
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  /* ── GRID PATTERN ── */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(225 30% 18% / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(225 30% 18% / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ── DOT PATTERN ── */
+  .dot-pattern {
+    background-image: radial-gradient(circle, hsl(225 30% 25% / 0.5) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* ── SCAN LINE EFFECT ── */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(225 35% 4% / 0.03) 2px,
+      hsl(225 35% 4% / 0.03) 4px
+    );
+    pointer-events: none;
   }
 }
