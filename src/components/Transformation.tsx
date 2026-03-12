@@ -65,7 +65,7 @@ const Transformation = () => {
                 <img
                   src={digitalClarityImg}
                   alt="Clean workspace with digital organization"
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700"
                   loading="lazy"
                   decoding="async"
                 />
@@ -82,7 +82,7 @@ const Transformation = () => {
                 <ul className="space-y-3 text-sm" style={{ color: 'hsl(215 20% 70%)' }}>
                   <li className="flex items-start gap-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5"></span>
-                    Scan and extract data in under 5 seconds
+                    Scan and extract data in under 30 seconds
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5"></span>

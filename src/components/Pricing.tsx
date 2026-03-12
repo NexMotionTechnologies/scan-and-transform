@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Check, Star, ArrowRight, Zap, Building2, Users, MessageSquare, Lock, Construction, Smartphone, Mail, Phone, Calculator, ShieldCheck } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nexmotiontechnologies.pampiri';
 
@@ -8,7 +10,8 @@ const pricingPlans = [
   {
     name: '30-Day Free Trial',
     description: 'Perfect for testing out Pampiri',
-    price: 'R0.00',
+    monthlyPrice: 'R0.00',
+    annualPrice: 'R0.00',
     period: 'for 30 days',
     Icon: Smartphone,
     features: [
@@ -30,7 +33,8 @@ const pricingPlans = [
   {
     name: 'Pro Plan',
     description: 'Ideal for individuals & freelancers',
-    price: 'R99.00',
+    monthlyPrice: 'R99.00',
+    annualPrice: 'R999.00',
     period: 'per month',
     Icon: Zap,
     features: [
@@ -54,7 +58,8 @@ const pricingPlans = [
   {
     name: 'Business Plan',
     description: 'Perfect for small teams',
-    price: 'R499.99',
+    monthlyPrice: 'R499.99',
+    annualPrice: 'R5,490.00',
     period: 'per month',
     Icon: Building2,
     features: [
@@ -78,7 +83,8 @@ const pricingPlans = [
   {
     name: 'Enterprise',
     description: 'For firms & large organizations',
-    price: 'R2,499.99',
+    monthlyPrice: 'R2,499.99',
+    annualPrice: 'R27,500.00',
     period: 'per month',
     Icon: MessageSquare,
     features: [
@@ -104,6 +110,7 @@ const pricingPlans = [
 
 const Pricing = () => {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
+  const [isAnnual, setIsAnnual] = useState(false);
   const { toast } = useToast();
 
   const handlePlanClick = (plan: typeof pricingPlans[0], e: React.MouseEvent) => {
@@ -152,9 +159,44 @@ const Pricing = () => {
           >
             Choose Your <span className="text-gradient-amber">Growth</span> Path
           </h2>
-          <p className="text-xl max-w-2xl mx-auto leading-relaxed mb-8" style={{ color: 'hsl(215 20% 55%)' }}>
+          <p className="text-xl max-w-2xl mx-auto leading-relaxed mb-12" style={{ color: 'hsl(215 20% 55%)' }}>
             All prices in ZAR. Payments processed securely via PayFast with recurring monthly billing.
           </p>
+
+          {/* Billing Toggle */}
+          <div className="flex items-center justify-center gap-4 mb-16">
+            <Label
+              htmlFor="billing-frequency"
+              className={`text-sm font-bold transition-all duration-300 ${!isAnnual ? 'text-white' : 'text-neutral-500'}`}
+            >
+              Monthly
+            </Label>
+            <div className="relative flex items-center">
+              <Switch
+                id="billing-frequency"
+                checked={isAnnual}
+                onCheckedChange={setIsAnnual}
+                className="data-[state=checked]:bg-amber-500 data-[state=unchecked]:bg-neutral-800"
+              />
+            </div>
+            <div className="flex items-center gap-3">
+              <Label
+                htmlFor="billing-frequency"
+                className={`text-sm font-bold transition-all duration-300 ${isAnnual ? 'text-white' : 'text-neutral-500'}`}
+              >
+                Annual
+              </Label>
+              <span 
+                className={`hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-black transition-all duration-500 uppercase tracking-tighter ${
+                  isAnnual 
+                    ? 'bg-teal-500/20 border-teal-500/50 text-teal-400 scale-110 shadow-[0_0_15px_rgba(20,184,166,0.4)]' 
+                    : 'bg-teal-500/10 border-teal-500/30 text-teal-400/60 opacity-70'
+                } border`}
+              >
+                Best Value
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Plans grid - items-end creates the growing baseline effect */}
@@ -232,7 +274,7 @@ const Pricing = () => {
                   />
 
                   {/* Plan icon + name */}
-                  <div className="relative z-10 mb-8">
+                  <div className="relative z-10 mb-8 flex flex-col items-center lg:items-start text-center lg:text-left">
                     <div
                       className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-110"
                       style={{
@@ -252,8 +294,8 @@ const Pricing = () => {
                   </div>
 
                   {/* Price */}
-                  <div className="relative z-10 mb-8">
-                    <div className="flex items-baseline gap-1.5">
+                  <div className="relative z-10 mb-8 flex flex-col items-center lg:items-start">
+                    <div className="flex items-baseline gap-1.5 justify-center lg:justify-start">
                       <span
                         className="text-4xl font-black"
                         style={{
@@ -261,11 +303,11 @@ const Pricing = () => {
                           fontFamily: "'Space Grotesk', sans-serif",
                         }}
                       >
-                        {plan.price}
+                        {isAnnual ? plan.annualPrice : plan.monthlyPrice}
                       </span>
                     </div>
-                    <p className="text-xs font-medium mt-1.5" style={{ color: 'hsl(215 20% 40%)' }}>
-                      {plan.period}
+                    <p className="text-xs font-medium mt-1.5 text-center lg:text-left" style={{ color: 'hsl(215 20% 40%)' }}>
+                      {plan.name === '30-Day Free Trial' ? plan.period : (isAnnual ? 'per year' : 'per month')}
                     </p>
                   </div>
 
@@ -332,7 +374,7 @@ const Pricing = () => {
         {/* Bottom note */}
         <div className="text-center mt-16 max-w-2xl mx-auto p-8 rounded-3xl" style={{ border: '1px dashed hsl(225 30% 18%)' }}>
           <p className="text-sm leading-relaxed" style={{ color: 'hsl(215 20% 45%)' }}>
-            Looking for something specific? We offer a <span className="text-white font-bold">7-day trial</span> on Enterprise plans while our team setups your custom environment.{' '}
+            Looking for something specific? We offer a <span className="text-white font-bold">30-day trial</span> on Enterprise plans while our team setups your custom environment.{' '}
             <br className="hidden sm:block" />
             <a
               href="mailto:info@nexmotiontechnologies.co.za"

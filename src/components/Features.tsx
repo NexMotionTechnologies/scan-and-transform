@@ -201,7 +201,7 @@ const Features = () => {
                 />
 
                 {/* Icon */}
-                <div className="relative z-10 mb-6">
+                <div className="relative z-10 mb-6 flex justify-center lg:justify-start">
                   <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-400 group-hover:scale-110 group-hover:rotate-3"
                     style={{
@@ -218,7 +218,7 @@ const Features = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 space-y-3">
+                <div className="relative z-10 space-y-3 text-center lg:text-left">
                   <h3
                     className="text-lg font-bold text-white group-hover:transition-colors"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -285,7 +285,7 @@ const Features = () => {
             {personas.map((persona, i) => (
               <div 
                 key={i} 
-                className="relative p-8 rounded-3xl border border-white/5 transition-all duration-500 hover:border-white/10 group bg-white/2 hover:-translate-y-2"
+                className="relative p-8 rounded-3xl border border-white/5 transition-all duration-500 hover:border-white/10 group bg-white/2 hover:-translate-y-2 flex flex-col items-center lg:items-start text-center lg:text-left"
                 style={{ 
                   background: 'hsl(222 30% 11%)',
                   boxShadow: '0 4px 20px hsl(225 35% 4% / 0.4)'

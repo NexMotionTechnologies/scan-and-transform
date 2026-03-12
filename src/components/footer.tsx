@@ -75,9 +75,9 @@ const Footer = () => {
         <div className="grid lg:grid-cols-12 gap-12 mb-14">
 
           {/* Brand column */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Logo */}
-            <div className="flex items-center gap-3 mb-6 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="flex items-center justify-center lg:justify-start gap-3 mb-6 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <div className="relative">
                 <div
                   className="absolute inset-0 rounded-full blur-md opacity-50 group-hover:opacity-80 transition-opacity"
@@ -91,14 +91,14 @@ const Footer = () => {
               </span>
             </div>
 
-            <p className="text-sm leading-relaxed mb-6 max-w-sm" style={{ color: 'hsl(215 20% 45%)' }}>
+            <p className="text-sm leading-relaxed mb-6 max-w-sm mx-auto lg:mx-0" style={{ color: 'hsl(215 20% 45%)' }}>
               AI-powered receipt scanning that transforms physical documents into
               clean, organized digital data. Built for businesses, accountants, and
               individuals who value efficiency.
             </p>
 
             {/* Socials */}
-            <div className="flex gap-3">
+            <div className="flex justify-center lg:justify-start gap-3">
               {socials.map(({ Icon, label, href, hoverColor }) => (
                 <a
                   key={label}
@@ -145,7 +145,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-3 lg:col-start-7">
+          <div className="lg:col-span-3 lg:col-start-7 text-center lg:text-left">
             <h3
               className="text-sm font-bold uppercase tracking-widest mb-6"
               style={{ color: 'hsl(215 20% 40%)', fontFamily: "'Space Grotesk', sans-serif" }}
@@ -158,7 +158,7 @@ const Footer = () => {
                   {id ? (
                     <button
                       onClick={() => handleScroll(id)}
-                      className="text-sm transition-all duration-200 hover:translate-x-1 flex items-center gap-2 group"
+                      className="text-sm transition-all duration-200 hover:translate-x-1 flex items-center justify-center lg:justify-start gap-2 group w-full lg:w-auto"
                       style={{ color: 'hsl(215 20% 45%)' }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = 'hsl(32 98% 55%)')}
                       onMouseLeave={(e) => (e.currentTarget.style.color = 'hsl(215 20% 45%)')}
@@ -169,7 +169,7 @@ const Footer = () => {
                   ) : (
                     <a
                       href={href}
-                      className="text-sm transition-all duration-200 hover:translate-x-1 flex items-center gap-2 group"
+                      className="text-sm transition-all duration-200 hover:translate-x-1 flex items-center justify-center lg:justify-start gap-2 group w-full lg:w-auto"
                       style={{ color: 'hsl(215 20% 45%)' }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = 'hsl(32 98% 55%)')}
                       onMouseLeave={(e) => (e.currentTarget.style.color = 'hsl(215 20% 45%)')}
@@ -184,7 +184,7 @@ const Footer = () => {
           </div>
 
           {/* Support + Contact */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 text-center lg:text-left">
             <h3
               className="text-sm font-bold uppercase tracking-widest mb-6"
               style={{ color: 'hsl(215 20% 40%)', fontFamily: "'Space Grotesk', sans-serif" }}
@@ -196,7 +196,7 @@ const Footer = () => {
                 <li key={label}>
                   <a
                     href={href}
-                    className="text-sm transition-all duration-200 flex items-center gap-2 group"
+                    className="text-sm transition-all duration-200 flex items-center justify-center lg:justify-start gap-2 group"
                     style={{ color: 'hsl(215 20% 45%)' }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = 'hsl(186 95% 50%)')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = 'hsl(215 20% 45%)')}
@@ -209,10 +209,10 @@ const Footer = () => {
             </ul>
 
             {/* Contact details */}
-            <div className="space-y-3">
+            <div className="space-y-3 flex flex-col items-center lg:items-start">
               <a
                 href="mailto:info@nexmotiontechnologies.co.za"
-                className="flex items-center gap-2.5 text-sm transition-all duration-200 group"
+                className="flex items-center justify-center lg:justify-start gap-2.5 text-sm transition-all duration-200 group"
                 style={{ color: 'hsl(215 20% 40%)' }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'hsl(32 98% 55%)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'hsl(215 20% 40%)')}
@@ -224,7 +224,7 @@ const Footer = () => {
                 href="https://wa.me/27676020866"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-sm transition-all duration-200"
+                className="flex items-center justify-center lg:justify-start gap-2.5 text-sm transition-all duration-200"
                 style={{ color: 'hsl(215 20% 40%)' }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'hsl(142 70% 50%)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'hsl(215 20% 40%)')}

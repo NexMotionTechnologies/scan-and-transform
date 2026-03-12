@@ -161,7 +161,7 @@ const Hero = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s+/g, '')}`}
-                  className="block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200"
+                  className="block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-center"
                   style={{ color: 'hsl(215 20% 65%)' }}
                   onClick={(e) => {
                     e.preventDefault();
