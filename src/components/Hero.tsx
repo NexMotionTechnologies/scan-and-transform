@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Scan, FileText, Zap, Menu, X, Download, ArrowRight, Shield, Sparkles } from 'lucide-react';
+import { Scan, FileText, Zap, Menu, X, Download, ArrowRight, Shield, Sparkles, Award } from 'lucide-react';
 import heroLogo from '@/assets/pampiri-hero-logo.png';
 import phoneMockup from '@/assets/phone-mockup-3d.png';
 import heroVideo from '@/assets/video.mp4';
@@ -208,7 +208,7 @@ const Hero = () => {
               
               {/* Live badge */}
               <div
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full text-sm font-medium"
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full text-xs font-semibold tracking-wide"
                 style={{
                   background: 'hsl(142 76% 45% / 0.1)',
                   border: '1px solid hsl(142 76% 45% / 0.3)',
@@ -216,7 +216,7 @@ const Hero = () => {
                 }}
               >
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                Now Live on Google Play Store
+                Live on Google Play Store
                 <Sparkles className="w-3.5 h-3.5" />
               </div>
 
@@ -237,6 +237,8 @@ const Hero = () => {
                     src={heroLogo}
                     className="relative w-20 h-20 logo-glow"
                     alt="Pampiri Logo"
+                    fetchPriority="high"
+                    decoding="sync"
                   />
                 </div>
                 <div>
@@ -257,23 +259,20 @@ const Hero = () => {
               {/* Headline */}
               <div className="space-y-3">
                 <h2 className="text-3xl lg:text-5xl font-bold leading-tight text-white">
-                  Turn receipts into{' '}
-                  <span className="text-gradient-brand">organized data</span>
-                  {' '}instantly
+                  Stop the manual entry <span className="text-gradient-brand">nightmare.</span>
                 </h2>
                 <p className="text-lg leading-relaxed max-w-xl" style={{ color: 'hsl(215 20% 60%)' }}>
-                  AI-powered receipt scanning that transforms physical documents into
-                  clean, exportable digital data — in seconds, not hours.
+                  Your time is too valuable to spend typing in receipts. Scan them in seconds, let our AI handle the details, and get back to growing your business.
                 </p>
               </div>
 
               {/* Feature pills */}
               <div className="flex flex-wrap gap-3">
                 {[
-                  { Icon: Scan, text: 'AI-Powered Scanning' },
-                  { Icon: FileText, text: 'Excel, CSV & PDF Export' },
-                  { Icon: Zap, text: 'Real-Time Processing' },
-                  { Icon: Shield, text: 'POPIA Compliant' },
+                  { Icon: Scan, text: 'Works on Faded Receipts' },
+                  { Icon: FileText, text: 'Ready for your Accountant' },
+                  { Icon: Zap, text: 'Done in Seconds' },
+                  { Icon: Shield, text: '100% Private & Secure' },
                 ].map(({ Icon, text }, i) => (
                   <div
                     key={i}
@@ -353,15 +352,15 @@ const Hero = () => {
               >
                 <div className="flex items-center gap-2 text-sm">
                   <Shield className="w-4 h-4" style={{ color: 'hsl(32 98% 52%)' }} />
-                  POPIA Compliant
+                  100% Private & Secure
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <Zap className="w-4 h-4" style={{ color: 'hsl(186 95% 42%)' }} />
                   Free to Download
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <Scan className="w-4 h-4" style={{ color: 'hsl(258 90% 68%)' }} />
-                  10 Free Scans Included
+                  <Award className="w-4 h-4" style={{ color: 'hsl(258 90% 68%)' }} />
+                  30-Day Free Trial
                 </div>
               </div>
             </div>
@@ -393,8 +392,8 @@ const Hero = () => {
                     src={phoneMockup}
                     alt="Pampiri mobile app — AI receipt scanning interface"
                     className="w-full h-auto relative z-10 hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                    decoding="async"
+                    fetchPriority="high"
+                    decoding="sync"
                   />
                 </div>
 
@@ -456,6 +455,8 @@ const Hero = () => {
                   <span className="text-lg font-black text-gradient-amber">99.5%</span>
                   <span className="text-xs" style={{ color: 'hsl(215 20% 55%)' }}>Accuracy</span>
                 </div>
+
+
               </div>
             </div>
           </div>

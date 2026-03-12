@@ -22,16 +22,16 @@ const benefits = [
     },
     {
         Icon: Target,
-        title: '10 Free Scans',
-        description: 'Try Pampiri free — no credit card, no commitment.',
+        title: '30-Day Free Trial',
+        description: 'Experience every Pro feature for a full month. No credit card required.',
         color: 'hsl(186 95% 42%)',
         glow: 'hsl(186 95% 42% / 0.2)',
         border: 'hsl(186 95% 42% / 0.3)',
     },
     {
         Icon: ShieldCheck,
-        title: 'POPIA Compliant',
-        description: 'Your data is safe with bank-level encryption.',
+        title: '100% Private & Secure',
+        description: 'Your data is safe with strict security measures.',
         color: 'hsl(258 90% 68%)',
         glow: 'hsl(258 90% 68% / 0.2)',
         border: 'hsl(258 90% 68% / 0.3)',
@@ -88,16 +88,15 @@ const DownloadSection = () => {
                             className="text-4xl lg:text-6xl font-black text-white leading-tight mb-6"
                             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                         >
-                            Ready to transform your{' '}
-                            <span className="text-gradient-brand">receipt management?</span>
+                            Stop the paperwork chaos.{' '}
+                            <span className="text-gradient-brand">Start scanning.</span>
                         </h2>
 
                         <p
                             className="text-xl leading-relaxed max-w-3xl mx-auto mb-12"
                             style={{ color: 'hsl(215 20% 55%)' }}
                         >
-                            Download Pampiri today and start converting physical receipts into
-                            organized digital data — powered by AI, available on Android.
+                            Join thousands of smart business owners who have reclaimed their weekends from manual entry. Get Pampiri now and see the difference in seconds.
                         </p>
 
                         {/* Primary CTA */}
@@ -221,7 +220,7 @@ const DownloadSection = () => {
                         <div className="hidden sm:block w-1 h-1 rounded-full" style={{ background: 'hsl(225 30% 25%)' }} />
                         <div className="flex items-center gap-2" style={{ color: 'hsl(215 20% 45%)' }}>
                             <Zap className="w-4 h-4" style={{ color: 'hsl(258 90% 68%)' }} />
-                            <span className="text-sm">AI-powered from day one</span>
+                            <span className="text-sm">Smart and intuitive from day one</span>
                         </div>
                     </div>
                 </div>

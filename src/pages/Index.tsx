@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import HowItWorks from '@/components/HowItWorks';
+import Transformation from '@/components/Transformation';
 import Features from '@/components/Features';
 import Pricing from '@/components/Pricing';
 import DownloadSection from '@/components/DownloadSection';
@@ -12,6 +13,7 @@ const Index = () => {
     <div className="min-h-screen" style={{ background: 'hsl(225, 35%, 6%)' }}>
       <Hero />
       <HowItWorks />
+      <Transformation />
       <Features />
       <Pricing />
       <DownloadSection />

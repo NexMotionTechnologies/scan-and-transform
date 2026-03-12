@@ -1,13 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { Camera, Brain, FileSpreadsheet, ArrowRight, CheckCircle2 } from 'lucide-react';
+import takeImage from '@/assets/take_image_optimized.jpg';
+import aiScan from '@/assets/ai_scan_optimized.jpg';
+import sendImage from '@/assets/send_optimized.jpg';
 
 const steps = [
   {
     number: '01',
-    title: 'Scan Your Receipt',
+    title: 'Take a Photo',
     description:
-      'Simply open Pampiri and point your camera at any receipt. Our advanced AI handles any lighting condition, angle, or receipt quality automatically.',
+      'Simply open Pampiri and point your camera at any receipt or invoice. Crumpled, faded, or badly lit? Don\'t worry, we\'ve got it.',
     Icon: Camera,
+    image: takeImage,
     accentColor: 'hsl(32 98% 52%)',
     glowColor: 'hsl(32 98% 52% / 0.25)',
     borderColor: 'hsl(32 98% 52% / 0.35)',
@@ -15,10 +19,11 @@ const steps = [
   },
   {
     number: '02',
-    title: 'AI Extracts Data',
+    title: 'We Read the Details',
     description:
-      'Our machine learning engine instantly identifies and extracts all text, amounts, dates, and merchant details with 99.5% accuracy — even from crumpled or faded receipts.',
+      'We instantly spot the important stuff—merchant name, date, total, and tax—so you don\'t have to type a single thing.',
     Icon: Brain,
+    image: aiScan,
     accentColor: 'hsl(258 90% 68%)',
     glowColor: 'hsl(258 90% 68% / 0.25)',
     borderColor: 'hsl(258 90% 68% / 0.35)',
@@ -26,10 +31,11 @@ const steps = [
   },
   {
     number: '03',
-    title: 'Export & Organize',
+    title: 'Send it Off',
     description:
-      'Get your organized data as Excel, CSV, or PDF — ready for your accounting software, expense tracker, or financial records in seconds.',
+      'Download your organized list as a spreadsheet or PDF. Hand it straight to your accountant or keep it for your own records.',
     Icon: FileSpreadsheet,
+    image: sendImage,
     accentColor: 'hsl(186 95% 42%)',
     glowColor: 'hsl(186 95% 42% / 0.25)',
     borderColor: 'hsl(186 95% 42% / 0.35)',
@@ -104,8 +110,7 @@ const HowItWorks = () => {
             className="text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: 'hsl(215 20% 55%)' }}
           >
-            From physical receipt to organized digital data in under 30 seconds.
-            No technical skills required.
+            Clear your desk of paper clutter in under 30 seconds. No technical skills required.
           </p>
         </div>
 
@@ -193,16 +198,28 @@ const HowItWorks = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 space-y-4">
+                <div className="relative z-10 space-y-4 mb-6">
                   <h3
                     className="text-2xl font-bold text-white group-hover:text-opacity-100 transition-colors"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {step.title}
                   </h3>
-                  <p className="leading-relaxed text-base" style={{ color: 'hsl(215 20% 55%)' }}>
+                  <p className="leading-relaxed text-sm" style={{ color: 'hsl(215 20% 55%)' }}>
                     {step.description}
                   </p>
+                </div>
+
+                {/* Step Image */}
+                <div className="relative z-10 mt-auto rounded-2xl overflow-hidden aspect-video border border-white/5 group-hover:border-white/10 transition-colors">
+                  <img 
+                    src={step.image} 
+                    alt={step.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
                 </div>
 
                 {/* Arrow connector for mobile */}

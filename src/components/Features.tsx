@@ -1,57 +1,57 @@
 import { useState, useEffect, useRef } from 'react';
-import { Camera, Brain, Zap, FileSpreadsheet, Edit3, Shield, TrendingUp, Users, Clock } from 'lucide-react';
+import { Camera, Brain, Zap, FileSpreadsheet, Edit3, Shield, TrendingUp, Users, Clock, Building2 } from 'lucide-react';
 
 const features = [
   {
     Icon: Camera,
-    title: 'Snap & Extract',
+    title: 'Works on Any Receipt',
     description:
-      'Turn any receipt or invoice into structured data in seconds. Our smart edge detection ensures perfect captures every time.',
+      'Don\'t worry if your receipt is crumpled, faded, or stained. Just point your camera, and we\'ll capture the details perfectly.',
     accentColor: 'hsl(32 98% 52%)',
     glowColor: 'hsl(32 98% 52% / 0.2)',
     borderColor: 'hsl(32 98% 52% / 0.3)',
   },
   {
     Icon: Zap,
-    title: 'Batch Scanning',
+    title: 'Clear Backlogs in Minutes',
     description:
-      'Process an entire month’s worth of paperwork in one session. Rapid-fire scanning allows you to digitize 50+ documents in minutes.',
+      'Have a massive pile of receipts from the whole month? Just keep snapping. You can get through 50+ receipts in minutes.',
     accentColor: 'hsl(186 95% 42%)',
     glowColor: 'hsl(186 95% 42% / 0.2)',
     borderColor: 'hsl(186 95% 42% / 0.3)',
   },
   {
     Icon: Brain,
-    title: '21-Field Accuracy',
+    title: 'Finds the Important Stuff',
     description:
-      'Automatically captures VAT, merchant info, line items, and totals across 21 distinct data points with 99.5% precision.',
+      'We automatically hunt down the merchant name, the date, the VAT amount, and the total so you don\'t have to look for it.',
     accentColor: 'hsl(258 90% 68%)',
     glowColor: 'hsl(258 90% 68% / 0.2)',
     borderColor: 'hsl(258 90% 68% / 0.3)',
   },
   {
     Icon: FileSpreadsheet,
-    title: 'Instant Export',
+    title: 'Ready for your Accountant',
     description:
-      'Download your organized data as Excel, CSV, or PDF — ready for QuickBooks, Xero, or your custom accounting software.',
+      'At the end of the month, simply tap export. Send a neat spreadsheet directly to your accountant or tax practitioner.',
     accentColor: 'hsl(142 76% 45%)',
     glowColor: 'hsl(142 76% 45% / 0.2)',
     borderColor: 'hsl(142 76% 45% / 0.3)',
   },
   {
     Icon: Edit3,
-    title: 'Verify & Approve',
+    title: 'You\'re Always in Control',
     description:
-      'Review and correct data with a streamlined interface. Our AI learns from your edits to get smarter with every scan.',
+      'Need to fix a typo or add a quick note? Review everything before it’s saved, ensuring your records are exactly how you want them.',
     accentColor: 'hsl(38 100% 55%)',
     glowColor: 'hsl(38 100% 55% / 0.2)',
     borderColor: 'hsl(38 100% 55% / 0.3)',
   },
   {
     Icon: Shield,
-    title: 'Compliance First',
+    title: 'Bank-Level Security',
     description:
-      'Enterprise-grade encryption with full POPIA & GDPR compliance. Your sensitive financial data is stored securely on-device.',
+      'Your financial information is extremely private. That\'s why we use strict security measures to ensure your data is safe and secure.',
     accentColor: 'hsl(200 90% 50%)',
     glowColor: 'hsl(200 90% 50% / 0.2)',
     borderColor: 'hsl(200 90% 50% / 0.3)',
@@ -59,9 +59,30 @@ const features = [
 ];
 
 const stats = [
-  { Icon: TrendingUp, value: '99.5%', label: 'Accuracy Rate', color: 'hsl(32 98% 52%)' },
-  { Icon: Users, value: '10+', label: 'Active Users', color: 'hsl(186 95% 42%)' },
-  { Icon: Clock, value: '<3s', label: 'Avg. Processing', color: 'hsl(258 90% 68%)' },
+  { Icon: TrendingUp, value: '99.5%', label: 'Scanning Accuracy', color: 'hsl(32 98% 52%)' },
+  { Icon: Users, value: '15,000+', label: 'Fields Extracted', color: 'hsl(186 95% 42%)' },
+  { Icon: Clock, value: '100+', label: 'Hours Saved Weekly', color: 'hsl(258 90% 68%)' },
+];
+
+const personas = [
+  {
+    title: 'Solopreneurs',
+    usage: 'Reclaim your weekends. Track every coffee meeting and travel expense automatically so you never scramble at tax time.',
+    Icon: Users,
+    color: 'hsl(32 98% 52%)',
+  },
+  {
+    title: 'Small Retailers',
+    usage: 'Stop losing money to lost slips. Snap supplier invoices as they arrive and keep your margins healthy and documented.',
+    Icon: Building2,
+    color: 'hsl(186 95% 42%)',
+  },
+  {
+    title: 'On-Site Teams',
+    usage: 'No more crumpled receipts in truck consoles. Contractors capture material costs instantly, ensuring every job stays profitable.',
+    Icon: Zap,
+    color: 'hsl(258 90% 68%)',
+  },
 ];
 
 const Features = () => {
@@ -125,12 +146,11 @@ const Features = () => {
             className="text-4xl lg:text-6xl font-black mb-6 text-white"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Why Choose{' '}
-            <span className="text-gradient-amber">Pampiri?</span>
+            Your Personal{' '}
+            <span className="text-gradient-amber">Filing Assistant</span>
           </h2>
           <p className="text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'hsl(215 20% 55%)' }}>
-            Everything you need to digitize and organize your receipts.
-            Powerful AI technology made simple and accessible.
+            Spend less time managing paperwork and more time doing what you actually love. We handle the boring stuff.
           </p>
         </div>
 
@@ -242,9 +262,51 @@ const Features = () => {
                 >
                   {value}
                 </span>
-                <span className="text-sm" style={{ color: 'hsl(215 20% 45%)' }}>
+                <span className="text-sm font-medium" style={{ color: 'hsl(215 20% 45%)' }}>
                   {label}
                 </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Who is this for? Section */}
+        <div className="mt-32">
+          <div className="text-center mb-16">
+            <h3 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Built for the <span className="text-gradient-teal">Real World</span>
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto" style={{ color: 'hsl(215 20% 55%)' }}>
+               Pampiri isn't just an app—it's a tool built for the specific ways you work every single day.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {personas.map((persona, i) => (
+              <div 
+                key={i} 
+                className="relative p-8 rounded-3xl border border-white/5 transition-all duration-500 hover:border-white/10 group bg-white/2 hover:-translate-y-2"
+                style={{ 
+                  background: 'hsl(222 30% 11%)',
+                  boxShadow: '0 4px 20px hsl(225 35% 4% / 0.4)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = `0 8px 30px ${persona.color}10`;
+                  e.currentTarget.style.borderColor = `${persona.color}30`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 20px hsl(225 35% 4% / 0.4)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                }}
+              >
+                <div 
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
+                  style={{ background: `${persona.color}15`, border: `1px solid ${persona.color}30` }}
+                >
+                  <persona.Icon className="w-6 h-6" style={{ color: persona.color }} />
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{persona.title}</h4>
+                <p className="text-sm leading-relaxed" style={{ color: 'hsl(215 20% 50%)' }}>{persona.usage}</p>
               </div>
             ))}
           </div>
