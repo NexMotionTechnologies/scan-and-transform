@@ -1,81 +1,77 @@
-# Pampiri - AI-Powered Receipt & Document Scanner
+# Pampiri Ecosystem — AI-Powered Scanning & Professional Invoicing
 
 [![License](https://img.shields.io/badge/license-Proprietary-blue.svg)](LICENSE)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat&logo=vite&logoColor=FFD62E)
 ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
 
-**Pampiri** is a premium, AI-driven document scanning and extraction platform developed by **NexMotion Technologies**. It transforms physical receipts and invoices into structured, actionable data in seconds, ensuring seamless financial management for businesses and individuals.
+**Pampiri** is a premium ecosystem of financial tools developed by **NexMotion Technologies**. It combines cutting-edge AI document scanning with a lightning-fast, privacy-first invoicing suite to empower South African small businesses, freelancers, and entrepreneurs.
 
-## ✨ Core Features
+---
 
-- **🎯 Snap & Extract**: Intelligent edge detection and high-performance ODR for perfect captures.
+## 🚀 Introducing Pampiri Invoice
+**Professional Invoicing. Free for everyone.** 
+
+Pampiri Invoice is a standalone, mobile-first invoicing application that allows you to create, manage, and share premium invoices in seconds.
+
+- **🎨 Zero Design Skills Required**: Professional, high-end templates that elevate your brand instantly.
+- **🛡️ 100% Local Privacy**: Your financial data never leaves your device. Everything is stored securely in your browser session.
+- **⚡ Start Invoicing Instantly**: No account creation, no monthly subscriptions, and no friction.
+- **📄 Dual PDF Export**: Choice between printer-friendly "Standard" or glassmorphic "Dark Premium" designs.
+- **📊 Real-time Dashboard**: Interactive financial KPI cards and charts for a bird's-eye view of your business health.
+
+---
+
+## ✨ Core Scanner Features (AI-Powered)
+
+- **🎯 Snap & Extract**: Intelligent edge detection and high-performance OCR for perfect receipt captures.
 - **⚡ Batch Scanning**: Process an entire month’s paperwork in minutes with rapid-fire batch modes.
-- **🧠 21-Field AI Accuracy**: Automatically capture VAT, merchant info, line items, and totals with 99.5% precision.
-- **📊 Instant Export**: Seamlessly download data as Excel, CSV, or PDF, ready for QuickBooks, Xero, or custom workflows.
+- **🧠 21-Field AI Accuracy**: Capture VAT, merchant info, line items, and totals with 99.5% precision.
+- **📊 Instant Export**: Seamlessly download data as Excel, CSV, or PDF, ready for QuickBooks or Xero.
 - **🛡️ Enterprise Grade Security**: Full POPIA & GDPR compliance with on-device encryption.
-- **📱 Professional Mobile Experience**: Available on Google Play with a streamlined "Verify & Approve" interface.
 
-## 🎨 Design Philosophy
+---
 
-Pampiri features a **futuristic, premium aesthetic** designed to wow users:
-- **Color Palette**: Deep Space Black, Warm Amber Gold, Electric Teal, and Vibrant Purple.
-- **Glassmorphism**: Sleek, transparent UI elements with vibrant ambient glows.
-- **Dynamic Animations**: Smooth transitions and micro-interactions powered by Framer Motion and custom CSS.
-- **Responsive Layout**: Optimized for high-resolution displays and mobile devices alike.
+## 🎨 Design & Interactive UX
+
+Pampiri features a **vibrant, high-contrast premium aesthetic** designed to provide a "live" feel:
+- **Interactive Side-Reveal**: A unique, sliding promo panel for Pampiri Invoice that allows for non-intrusive product discovery.
+- **Glow-Pulse Navigation**: Dynamic visual indicators highlight newly launched features like the Invoice portal.
+- **Mobile-First Responsive Layout**: Optimized for high-resolution displays and mobile devices, featuring stacked action banners and adaptive navigation menus.
+- **Glassmorphism & Micro-Animations**: Advanced CSS filter effects and custom cubic-bezier transitions for a tactile, responsive experience.
+
+---
 
 ## 🛠️ Technology Stack
 
+### Main Platform
 - **Frontend**: React 18 with Vite
-- **Styling**: Tailwind CSS & Vanilla CSS
-- **Components**: shadcn-ui & Lucide Icons
+- **Styling**: Tailwind CSS & Modern Vanilla CSS (Custom Hooks for layout management)
+- **Icons**: Lucide React
 - **Language**: TypeScript
-- **State Management**: React Hooks
 
-## 🚀 Getting Started
+### Pampiri Invoice (Tech Highlights)
+- **Framework**: React 18 Functional Components
+- **State**: Zustand with Persist Middleware (Zero-config LocalStorage sync)
+- **PDF Core**: html2pdf.js with viewport scaling
+- **Visuals**: CSS Grid & Flexbox (Hand-crafted design system)
+
+---
+
+## 🏗️ Getting Started
 
 ### Prerequisites
-
 - Node.js (v18.0.0 or higher)
 - npm or yarn
 
 ### Installation
-
-1. Clone the repository:
-   ```sh
-   git clone <YOUR_GIT_URL>
-   ```
-
-2. Navigate to the project directory:
-   ```sh
-   cd scan-and-transform
-   ```
-
-3. Install dependencies:
-   ```sh
-   npm install
-   ```
-
-4. Start the development server:
-   ```sh
-   npm run dev
-   ```
-
-## 🏗️ Building for Production
-
-To create an optimized production build:
-
-```sh
-npm run build
-```
-
-The build artifacts will be stored in the `dist/` directory.
-
-## 📄 License
-
-Proprietary © [NexMotion Technologies](https://nexmotiontechnologies.co.za)
+1. Clone the repository: `git clone <YOUR_GIT_URL>`
+2. Install dependencies: `npm install`
+3. Start the dev server: `npm run dev`
 
 ---
+
+## 📄 License
+Proprietary © [NexMotion Technologies](https://nexmotiontechnologies.co.za)
 
 Developed with ❤️ by the NexMotion Technologies Team.

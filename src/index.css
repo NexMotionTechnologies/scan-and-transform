@@ -254,6 +254,42 @@
     background-size: 24px 24px;
   }
 
+  /* ── CUSTOM ANIMATIONS ── */
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 15s ease infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      text-shadow: 0 0 4px hsl(210 40% 98% / 0.4), 0 0 10px hsl(32 98% 52% / 0.3);
+      color: hsl(215 20% 75%);
+    }
+    50% {
+      text-shadow: 0 0 15px hsl(210 40% 98% / 0.9), 0 0 30px hsl(32 98% 52% / 0.6), 0 0 45px hsl(32 98% 52% / 0.4);
+      color: white;
+      opacity: 1;
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  /* ── BACKGROUND GRADIENTS ── */
+  .bg-gradient-amber {
+    background: linear-gradient(135deg, hsl(32 98% 52%), hsl(38 100% 60%));
+  }
+
+  .bg-gradient-brand-soft {
+    background: linear-gradient(135deg, hsl(32 98% 52% / 0.1) 0%, hsl(258 90% 68% / 0.1) 50%, hsl(186 95% 42% / 0.1) 100%);
+  }
+
   /* ── SCAN LINE EFFECT ── */
   .scanlines::after {
     content: '';

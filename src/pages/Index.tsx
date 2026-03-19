@@ -1,3 +1,4 @@
+import AnnouncementBanner from '@/components/AnnouncementBanner';
 import Hero from '@/components/Hero';
 import HowItWorks from '@/components/HowItWorks';
 import Transformation from '@/components/Transformation';

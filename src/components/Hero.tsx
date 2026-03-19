@@ -4,6 +4,7 @@ import { Scan, FileText, Zap, Menu, X, Download, ArrowRight, Shield, Sparkles, A
 import heroLogo from '@/assets/pampiri-hero-logo.png';
 import phoneMockup from '@/assets/phone-mockup-3d.png';
 import heroVideo from '@/assets/video.mp4';
+import AnnouncementBanner from './AnnouncementBanner';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nexmotiontechnologies.pampiri';
 
@@ -20,19 +21,32 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
+  const [isPromoExpanded, setIsPromoExpanded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    const bannerDismissed = localStorage.getItem('pampiri-invoice-banner-dismissed');
+    if (bannerDismissed) setIsBannerVisible(false);
+
     return () => {
       clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const navItems = ['Home', 'How It Works', 'Features', 'Pricing', 'Contact'];
+  const navItems = [
+    { label: 'Home', id: 'home' },
+    { label: 'Invoice', href: 'https://invoice.mypampiri.co.za', isNew: true },
+    { label: 'How It Works', id: 'howitworks' },
+    { label: 'Features', id: 'features' },
+    { label: 'Pricing', id: 'pricing' },
+    { label: 'Contact', id: 'contact' },
+  ];
 
   const navbarOpacity = Math.min(scrollY / 100, 1);
   const navbarStyle = {
@@ -74,10 +88,12 @@ const Hero = () => {
            style={{ background: 'radial-gradient(circle, hsl(258 90% 68% / 0.05) 0%, transparent 70%)' }} />
 
       {/* ── NAVBAR ── */}
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 w-full py-4 px-4 transition-all duration-300"
-        style={navbarStyle}
-      >
+      {/* ── HEADER WRAPPER (Nav + Banner) ── */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <nav
+          className="w-full py-4 px-4 transition-all duration-300"
+          style={navbarStyle}
+        >
         <div className="container mx-auto flex items-center justify-between">
           
           {/* Logo */}
@@ -101,27 +117,35 @@ const Hero = () => {
             </span>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, '')}`}
-                className="px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg relative group"
-                style={{ color: 'hsl(215 20% 65%)' }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const id = item.toLowerCase().replace(/\s+/g, '');
-                  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'hsl(215 20% 65%)')}
-              >
-                {item}
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 rounded-full transition-all duration-300 group-hover:w-4"
-                      style={{ background: 'hsl(32 98% 52%)' }} />
-              </a>
-            ))}
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href || `#${item.id}`}
+                  target={item.href ? "_blank" : undefined}
+                  rel={item.href ? "noopener noreferrer" : undefined}
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg relative group flex items-center gap-1.5 ${
+                    item.label === 'Invoice' ? 'animate-glow-pulse font-bold' : ''
+                  }`}
+                  style={{ color: item.label === 'Invoice' ? undefined : 'hsl(215 20% 65%)' }}
+                  onClick={(e) => {
+                    if (item.id) {
+                      e.preventDefault();
+                      document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'hsl(215 20% 65%)')}
+                >
+                  {item.label}
+                  {item.isNew && (
+                    <span className="flex h-1.5 w-1.5 rounded-full bg-orange-500 shadow-[0_0_8px_hsl(32_98%_52%)]" />
+                  )}
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 rounded-full transition-all duration-300 group-hover:w-4"
+                        style={{ background: 'hsl(32 98% 52%)' }} />
+                </a>
+              ))}
             <a
               href={PLAY_STORE_URL}
               target="_blank"
@@ -145,61 +169,130 @@ const Hero = () => {
             style={{ color: 'hsl(215 20% 65%)', background: 'hsl(225 30% 14%)' }}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen
-              ? <X className="w-5 h-5" />
-              : <Menu className="w-5 h-5" />
-            }
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-2 mx-4 rounded-2xl bg-hsl(225 30% 10%) border border-hsl(225 30% 20%) overflow-hidden">
+              <div className="p-4 flex flex-col space-y-1">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href || `#${item.id}`}
+                    target={item.href ? "_blank" : undefined}
+                    rel={item.href ? "noopener noreferrer" : undefined}
+                    className={`px-4 py-3 rounded-xl text-sm font-medium text-center flex items-center justify-center gap-2 ${
+                      item.label === 'Invoice' ? 'animate-glow-pulse font-bold' : ''
+                    }`}
+                    style={{ color: item.label === 'Invoice' ? undefined : 'hsl(215 20% 65%)' }}
+                    onClick={(e) => {
+                      if (item.id) {
+                        e.preventDefault();
+                        setIsMobileMenuOpen(false);
+                        document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    {item.label}
+                    {item.isNew && (
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-orange-500/10 text-orange-500 border border-orange-500/20 uppercase">New</span>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </nav>
+        {isBannerVisible && <AnnouncementBanner onClose={() => setIsBannerVisible(false)} />}
+      </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-2 mx-4 rounded-2xl overflow-hidden"
-               style={{ background: 'hsl(225 30% 10%)', border: '1px solid hsl(225 30% 20%)' }}>
-            <div className="p-4 flex flex-col space-y-1">
-              {navItems.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(/\s+/g, '')}`}
-                  className="block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-center"
-                  style={{ color: 'hsl(215 20% 65%)' }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsMobileMenuOpen(false);
-                    document.getElementById(item.toLowerCase().replace(/\s+/g, ''))?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'white';
-                    e.currentTarget.style.background = 'hsl(225 30% 16%)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'hsl(215 20% 65%)';
-                    e.currentTarget.style.background = 'transparent';
-                  }}
-                >
-                  {item}
-                </a>
+      {/* ── SIDE PROMO REVEAL BUTTON ── */}
+      <button
+        onClick={() => setIsPromoExpanded(!isPromoExpanded)}
+        className={`fixed left-0 top-1/2 -translate-y-1/2 z-[120] p-3 rounded-r-2xl border-y border-r transition-all duration-500 hover:pl-6 group ${
+          isPromoExpanded ? 'bg-primary border-primary -translate-x-full' : 'bg-background/80 backdrop-blur-xl border-white/10 shadow-2xl'
+        }`}
+        aria-label="Toggle Launch Details"
+      >
+        <div className="flex flex-col items-center gap-4">
+          <span className="[writing-mode:vertical-lr] rotate-180 text-[10px] font-bold tracking-widest uppercase opacity-60 text-white">LAUNCH</span>
+          <ArrowRight className={`w-5 h-5 transition-transform duration-500 ${isPromoExpanded ? 'rotate-180' : 'animate-pulse text-primary'}`} />
+        </div>
+      </button>
+
+      {/* ── DRAGGABLE/SLIDING PROMO PANEL ── */}
+      <div 
+        className={`fixed inset-y-0 left-0 z-[110] w-full lg:w-[450px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_100px_rgba(0,0,0,0.8)] ${
+          isPromoExpanded ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="h-full bg-background/95 backdrop-blur-3xl border-r border-white/10 relative flex flex-col items-center justify-center p-8 lg:p-12 overflow-hidden">
+          {/* Animated Background Orbs for the Panel */}
+          <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] opacity-20 bg-primary" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-[100px] opacity-20 bg-secondary" />
+          
+          <button 
+            onClick={() => setIsPromoExpanded(false)}
+            className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors text-white/60 hover:text-white"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <div className="relative z-10 w-full space-y-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-primary/10 border border-primary/20 text-primary">
+              <Sparkles className="w-3 h-3" />
+              New Launch
+            </div>
+
+            <h3 className="text-4xl lg:text-5xl font-black text-white leading-tight">
+              Pampiri <span className="text-gradient-amber">Invoice</span>
+            </h3>
+
+            <p className="text-lg text-white/70 leading-relaxed font-medium">
+              Professional invoicing. <span className="text-white">Free for everyone.</span>
+              <br />
+              <span className="text-sm font-normal text-white/50">Create and manage beautiful invoices in seconds—zero design skills required.</span>
+            </p>
+
+            <ul className="space-y-4">
+              {[
+                { label: 'Free to Use', sub: 'Access professional invoicing tools with no upfront costs.' },
+                { label: 'No Design Skills Needed', sub: 'Use "designer-level" templates that do the heavy lifting.' },
+                { label: 'Faster & Smarter', sub: 'A streamlined workflow from draft to paid in record time.' },
+                { label: 'Your Data, Your Privacy', sub: '100% private storage. Everything stays safe on your device.' }
+              ].map((feature, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <div className="mt-1.5 w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center border border-primary/40 shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">{feature.label}</div>
+                    <div className="text-[10px] text-white/50 leading-tight">{feature.sub}</div>
+                  </div>
+                </li>
               ))}
-              <a
-                href={PLAY_STORE_URL}
-                target="_blank"
+            </ul>
+
+            <div className="pt-6">
+              <a 
+                href="https://invoice.mypampiri.co.za" 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 mt-2 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(32 98% 52%), hsl(38 100% 60%))',
-                  color: 'hsl(222 84% 5%)',
-                }}
+                className="group flex items-center justify-between w-full px-6 py-5 rounded-2xl bg-gradient-amber text-black font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-primary/20"
               >
-                <Download className="w-4 h-4" />
-                Download on Google Play
+                Start Invoicing
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
+              <p className="text-[10px] text-center mt-4 text-white/30 uppercase tracking-widest font-black">
+                No Account Required · Open Instantly
+              </p>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      </div>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="flex-1 flex items-center justify-center relative z-10 pt-24 pb-16">
+      <div className={`flex-1 flex items-center justify-center relative z-10 ${isBannerVisible ? 'pt-40' : 'pt-24'} pb-16`}>
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 

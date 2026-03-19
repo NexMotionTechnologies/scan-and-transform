@@ -32,6 +32,7 @@ const socials = [
 
 const quickLinks = [
   { label: 'Home', id: 'home' },
+  { label: 'Pampiri Invoice', href: 'https://invoice.mypampiri.co.za' },
   { label: 'How It Works', id: 'howitworks' },
   { label: 'Features', id: 'features' },
   { label: 'Pricing', id: 'pricing' },
