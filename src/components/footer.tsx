@@ -42,8 +42,8 @@ const quickLinks = [
 
 const supportLinks = [
   { label: 'Contact Us', href: '/contact' },
-  { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: 'Terms of Service', href: '/privacy-policy' },
+  { label: 'Privacy Policy', href: '/privacy-policy?tab=privacy' },
+  { label: 'Terms of Service', href: '/privacy-policy?tab=terms' },
 ];
 
 const Footer = () => {

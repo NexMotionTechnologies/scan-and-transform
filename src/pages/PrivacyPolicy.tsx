@@ -4,10 +4,19 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Shield, FileText, Clock, AlertTriangle, CheckCircle, Target, User, CreditCard, Settings, BarChart3, Phone, Mail, Building, Download } from 'lucide-react';
 
 const PrivacyPolicy = () => {
-  const [activeTab, setActiveTab] = useState<'terms' | 'privacy'>('terms');
+  const getTabFromLocation = (): 'terms' | 'privacy' => {
+    if (typeof window === 'undefined') return 'privacy';
+    const params = new URLSearchParams(window.location.search);
+    return params.get('tab') === 'terms' ? 'terms' : 'privacy';
+  };
+
+  const [activeTab, setActiveTab] = useState<'terms' | 'privacy'>(getTabFromLocation());
 
   const showTab = (tabName: 'terms' | 'privacy') => {
     setActiveTab(tabName);
+    const url = new URL(window.location.href);
+    url.searchParams.set('tab', tabName);
+    window.history.replaceState({}, '', url);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -284,8 +293,8 @@ const PrivacyPolicy = () => {
               <div className="grid md:grid-cols-2 gap-4 mb-6 text-sm">
                 <div><strong>Company Registration:</strong> 2025/227658/07</div>
                 <div><strong>Trading As:</strong> Pampiri</div>
-                <div><strong>Document Version:</strong> 2.1</div>
-                <div><strong>Last Updated:</strong> September 12, 2025</div>
+                <div><strong>Document Version:</strong> 2.2</div>
+                <div><strong>Last Updated:</strong> July 20, 2026</div>
               </div>
               
               <div className="bg-primary/10 border-l-4 border-primary p-6 rounded-r-xl">
@@ -305,13 +314,16 @@ const PrivacyPolicy = () => {
               <div className="grid md:grid-cols-2 gap-2 text-sm">
                 <div className="space-y-2">
                   <div>1. Company Information & Contact Details</div>
-                  <div>2. Privacy Policy - Complete</div>
-                  <div>3. PAIA Manual Integration</div>
+                  <div>2. Legal Basis for Processing</div>
+                  <div>3. Categories of Personal Information We Collect</div>
+                  <div>4. Your Rights Under POPIA</div>
                 </div>
                 <div className="space-y-2">
-                  <div>4. Technical System Documentation</div>
-                  <div>5. Legal Framework & Compliance</div>
-                  <div>6. Downloadable Forms</div>
+                  <div>5. Data Security Measures</div>
+                  <div>6. Data Sharing and Cross-Border Transfer</div>
+                  <div>7. Data Retention</div>
+                  <div>8. Contact Information & Complaints</div>
+                  <div>9. Downloadable Forms</div>
                 </div>
               </div>
             </div>
@@ -340,8 +352,7 @@ const PrivacyPolicy = () => {
                     <div><strong>Chief Information Officer:</strong> Casious Segeale Mookamedi</div>
                     <div><strong>Telephone:</strong> 0781758732 / 0685517535</div>
                     <div><strong>Email:</strong> info@nexmotiontechnologies.co.za / mookamedi@nexmotiontechnologies.co.za</div>
-                    <div><strong>Support Email:</strong> support@mypampiri.co.za</div>
-                    <div><strong>Compliance Email:</strong> compliance@mypampiri.co.za</div>
+                    <div><strong>Support / Data Protection Officer Email:</strong> support@mypampiri.co.za</div>
                     <div><strong>Websites:</strong> www.mypampiri.co.za / www.nexmotiontechnologies.co.za</div>
                   </div>
                 </div>
@@ -415,8 +426,8 @@ const PrivacyPolicy = () => {
                   <h4 className="font-semibold text-foreground mb-3">3.2 Payment and Billing Information</h4>
                   <ul className="space-y-2">
                     {[
-                      "What we collect: Credit card details, billing address, VAT number, payment history",
-                      "How collected: Payment forms processed by our payment providers (Stripe & PayFast)",
+                      "What we collect: Billing address, VAT number, payment history (we do not store your card details)",
+                      "How collected: Payment forms processed by our secure payment provider, PayFast (Pty) Ltd",
                       "Legal basis: Contract performance",
                       "Required/Optional: Required for paid subscriptions"
                     ].map((item, index) => (
@@ -434,7 +445,7 @@ const PrivacyPolicy = () => {
                     {[
                       "What we collect: Uploaded files and images (all formats), Document content and text extracted through processing, Document metadata (file size, type, creation date, processing timestamps), Processing results and formatted output",
                       "How collected: File uploads, document processing activities",
-                      "Legal basis: Contract performance, consent",
+                      "Legal basis: Contract performance for storage; your separate, explicit consent for AI-based extraction",
                       "Required/Optional: Required for service functionality"
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
@@ -443,6 +454,20 @@ const PrivacyPolicy = () => {
                       </li>
                     ))}
                   </ul>
+                  <div className="bg-primary/5 rounded-xl p-4 mt-3">
+                    <p className="text-muted-foreground text-sm">
+                      <strong className="text-foreground">Who processes your document content:</strong> Pampiri's AI extraction uses{" "}
+                      <strong>Google Cloud Vision</strong> (United States) to read text from your document, and{" "}
+                      <strong>Together AI Inc.</strong> (San Francisco, California, United States), running an open-weight
+                      model on its own infrastructure, to extract structured fields such as merchant, amounts, and VAT.
+                      Original document images are stored only in our own <strong>Google Firebase</strong> infrastructure.
+                      We do not currently have a signed data processing agreement with Together AI Inc.; document text is
+                      sent to it only after you give a separate, itemised consent to that specific transfer in the
+                      Pampiri app, and our account with Together AI is configured so it does not store your data for its
+                      own product improvement, does not use it to train any model, and does not route it to any
+                      third-party provider.
+                    </p>
+                  </div>
                 </div>
 
                 <div>
@@ -572,13 +597,94 @@ const PrivacyPolicy = () => {
                   </ul>
                 </div>
               </div>
+
+              <div className="bg-accent/10 border-l-4 border-accent p-6 rounded-r-xl mt-6">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-foreground">Security Compromise Notification:</strong>
+                    <p className="text-muted-foreground mt-1 text-sm">
+                      If a security compromise occurs that has, or may reasonably be believed to have, compromised
+                      your personal information, we will notify the Information Regulator and you as soon as
+                      reasonably possible, in accordance with section 22 of POPIA. Our internal target is to notify
+                      the Information Regulator within <strong>72 hours</strong> of becoming aware of a qualifying
+                      compromise.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Data Sharing and Cross-Border Transfer */}
+            <div className="bg-card border border-border rounded-3xl p-8 shadow-card">
+              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+                <Building className="w-6 h-6 text-secondary" />
+                6. Data Sharing and Cross-Border Transfer
+              </h3>
+              <p className="text-muted-foreground mb-4">We do not sell your personal information. We share it only with the following named service providers, each engaged to help us operate Pampiri:</p>
+              <div className="grid gap-3">
+                {[
+                  { name: 'Google Firebase', role: 'Account authentication, database, and file storage' },
+                  { name: 'Google Cloud Vision', role: 'Optical character recognition (OCR) of your uploaded documents' },
+                  { name: 'Together AI Inc.', role: 'AI-based structured field extraction from OCR text (not the original image)' },
+                  { name: 'PayFast (Pty) Ltd', role: 'Subscription payment processing' },
+                  { name: 'EmailJS', role: 'Sending transactional and beta-programme emails' },
+                ].map((item, index) => (
+                  <div key={index} className="bg-background border border-border rounded-xl p-4 flex items-start gap-3">
+                    <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <span className="font-semibold text-foreground">{item.name}</span>
+                      <span className="text-muted-foreground text-sm"> — {item.role}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-primary/10 border-l-4 border-primary p-6 rounded-r-xl mt-6">
+                <strong className="text-foreground">Cross-border transfer:</strong>
+                <p className="text-muted-foreground mt-1 text-sm">
+                  Google Firebase, Google Cloud Vision, EmailJS, and Together AI Inc. are located in, or transfer
+                  data to, the United States. In accordance with section 72 of POPIA, transfers to Google and
+                  EmailJS rely on those providers' standard data processing terms, which include appropriate
+                  international transfer safeguards. Transfers to Together AI Inc. — with whom we do not currently
+                  have a signed data processing agreement — rely instead on your explicit, informed consent to that
+                  specific transfer, given through the Pampiri app's dedicated AI-processing consent flow before any
+                  document is sent for extraction.
+                </p>
+              </div>
+            </div>
+
+            {/* Data Retention */}
+            <div className="bg-card border border-border rounded-3xl p-8 shadow-card">
+              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+                <Clock className="w-6 h-6 text-accent" />
+                7. Data Retention
+              </h3>
+              <p className="text-muted-foreground mb-4">We retain your personal information only for as long as necessary for the purposes it was collected:</p>
+              <div className="grid md:grid-cols-2 gap-3">
+                {[
+                  { type: 'Account Information', period: 'Duration of account + 1 year' },
+                  { type: 'Document content and extracted data', period: 'Until you delete it or close your account, plus 30 days' },
+                  { type: 'Transaction Records', period: '7 years (tax compliance)' },
+                  { type: 'Communications', period: '3 years after last contact' },
+                  { type: 'Technical Logs', period: '90 days' },
+                ].map((item, index) => (
+                  <div key={index} className="bg-background border border-border rounded-xl p-4">
+                    <div className="font-semibold text-foreground text-sm">{item.type}</div>
+                    <div className="text-muted-foreground text-sm">{item.period}</div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-muted-foreground text-sm mt-4">
+                Together AI Inc. does not retain document text beyond the API call used to extract it, per its own
+                published data retention policy.
+              </p>
             </div>
 
             {/* Contact Information */}
             <div className="bg-card border border-border rounded-3xl p-8 shadow-card">
               <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <Phone className="w-6 h-6 text-primary" />
-                6. Contact Information & Complaints
+                8. Contact Information & Complaints
               </h3>
               
               <div className="grid md:grid-cols-2 gap-8">
@@ -624,7 +730,7 @@ const PrivacyPolicy = () => {
             <div className="bg-card border border-border rounded-3xl p-8 shadow-card">
               <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <Download className="w-6 h-6 text-secondary" />
-                7. Downloadable Forms
+                9. Downloadable Forms
               </h3>
               
               <p className="text-muted-foreground mb-6">
@@ -676,8 +782,8 @@ const PrivacyPolicy = () => {
             <div className="text-center text-muted-foreground border-t border-border pt-8">
               <p className="mb-2"><strong>Document Control</strong></p>
               <p>Document Owner: Casious Segeale Mookamedi, CEO</p>
-              <p>Last Updated: September 12, 2025 | Version: 2.1</p>
-              <p>Next Review Date: September 12, 2026</p>
+              <p>Last Updated: July 20, 2026 | Version: 2.2</p>
+              <p>Next Review Date: July 20, 2027</p>
               <p className="mt-4 text-sm italic">This document combines privacy policy, PAIA manual, and technical documentation in compliance with South African data protection and access to information legislation.</p>
             </div>
           </div>
