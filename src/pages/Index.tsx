@@ -2,7 +2,9 @@ import AnnouncementBanner from '@/components/AnnouncementBanner';
 import Hero from '@/components/Hero';
 import HowItWorks from '@/components/HowItWorks';
 import Transformation from '@/components/Transformation';
+import Personas from '@/components/Personas';
 import Features from '@/components/Features';
+import InvoiceSpotlight from '@/components/InvoiceSpotlight';
 import Pricing from '@/components/Pricing';
 import DownloadSection from '@/components/DownloadSection';
 import Footer from '@/components/footer';
@@ -15,7 +17,9 @@ const Index = () => {
       <Hero />
       <HowItWorks />
       <Transformation />
+      <Personas />
       <Features />
+      <InvoiceSpotlight />
       <Pricing />
       <DownloadSection />
       <Footer />

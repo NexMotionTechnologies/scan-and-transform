@@ -21,7 +21,7 @@ const steps = [
     number: '02',
     title: 'We Read the Details',
     description:
-      'We instantly spot the important stuff—merchant name, date, total, and tax—so you don\'t have to type a single thing.',
+      'We instantly spot the merchant name, date, total, and tax, so you don\'t have to type a single thing. Everything shows up on screen first, so you can check it and fix anything that looks off before it\'s saved.',
     Icon: Brain,
     image: aiScan,
     accentColor: 'hsl(258 90% 68%)',
@@ -157,10 +157,10 @@ const HowItWorks = () => {
                 />
 
                 {/* Step number + icon row */}
-                <div className="flex items-start justify-between mb-8 relative z-10">
+                <div className="flex flex-col items-center gap-4 mb-8 relative z-10 sm:flex-row sm:items-start sm:justify-between sm:gap-0">
                   {/* Large step number bg */}
                   <span
-                    className="text-7xl font-black leading-none select-none pointer-events-none"
+                    className="hidden sm:block text-7xl font-black leading-none select-none pointer-events-none"
                     style={{
                       color: step.accentColor,
                       opacity: 0.12,
@@ -173,9 +173,20 @@ const HowItWorks = () => {
                     {step.number}
                   </span>
 
+                  {/* Icon */}
+                  <div
+                    className="order-1 sm:order-2 w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
+                    style={{
+                      background: step.accentColor,
+                      boxShadow: `0 4px 16px ${step.glowColor}`,
+                    }}
+                  >
+                    <step.Icon className="w-7 h-7 text-white" strokeWidth={2} />
+                  </div>
+
                   {/* Step pill */}
                   <div
-                    className="px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
+                    className="order-2 sm:order-1 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
                     style={{
                       background: `${step.accentColor.replace(')', ' / 0.15)').replace('hsl(', 'hsl(')}`,
                       color: step.accentColor,
@@ -184,21 +195,10 @@ const HowItWorks = () => {
                   >
                     Step {step.number}
                   </div>
-
-                  {/* Icon */}
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
-                    style={{
-                      background: step.accentColor,
-                      boxShadow: `0 4px 16px ${step.glowColor}`,
-                    }}
-                  >
-                    <step.Icon className="w-7 h-7 text-white" strokeWidth={2} />
-                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 space-y-4 mb-6">
+                <div className="relative z-10 space-y-4 mb-6 text-center sm:text-left">
                   <h3
                     className="text-2xl font-bold text-white group-hover:text-opacity-100 transition-colors"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -233,8 +233,8 @@ const HowItWorks = () => {
           ))}
         </div>
 
-        {/* Bottom indicator */}
-        <div className="text-center mt-16">
+        {/* Bottom indicators */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-16">
           <div
             className="inline-flex items-center gap-3 px-6 py-3 rounded-full text-sm font-medium"
             style={{
@@ -245,6 +245,17 @@ const HowItWorks = () => {
           >
             <CheckCircle2 className="w-4 h-4" />
             Average processing time under 30 seconds
+          </div>
+          <div
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full text-sm font-medium"
+            style={{
+              background: 'hsl(186 95% 42% / 0.08)',
+              border: '1px solid hsl(186 95% 42% / 0.25)',
+              color: 'hsl(186 95% 55%)',
+            }}
+          >
+            <CheckCircle2 className="w-4 h-4" />
+            You always approve before anything is saved
           </div>
         </div>
       </div>

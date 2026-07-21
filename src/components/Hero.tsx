@@ -249,17 +249,17 @@ const Hero = () => {
             </h3>
 
             <p className="text-lg text-white/70 leading-relaxed font-medium">
-              Professional invoicing. <span className="text-white">Free for everyone.</span>
+              Unlimited, fully compliant invoicing. <span className="text-white">Included from Personal Pro.</span>
               <br />
-              <span className="text-sm font-normal text-white/50">Create and manage beautiful invoices in seconds—zero design skills required.</span>
+              <span className="text-sm font-normal text-white/50">Create invoices that can't be faked, add your payment link, and let clients pay in a tap. No design skills needed.</span>
             </p>
 
             <ul className="space-y-4">
               {[
-                { label: 'Free to Use', sub: 'Access professional invoicing tools with no upfront costs.' },
-                { label: 'No Design Skills Needed', sub: 'Use "designer-level" templates that do the heavy lifting.' },
-                { label: 'Faster & Smarter', sub: 'A streamlined workflow from draft to paid in record time.' },
-                { label: 'Your Data, Your Privacy', sub: '100% private storage. Everything stays safe on your device.' }
+                { label: 'Unlimited Invoices', sub: 'No count quota. Send as many as your business needs.' },
+                { label: 'VAT, Sorted', sub: 'We work out what you owe and what you can claim back, ready in one tap.' },
+                { label: 'WhatsApp Payment Links', sub: 'Add your SnapScan, Yoco, or PayFast link and it shows up on every invoice automatically.' },
+                { label: 'Can\'t Be Faked', sub: 'Every invoice is sealed the moment it\'s sent, so it can\'t be quietly changed afterwards.' }
               ].map((feature, i) => (
                 <li key={i} className="flex items-start gap-4">
                   <div className="mt-1.5 w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center border border-primary/40 shrink-0">
@@ -284,7 +284,7 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
               <p className="text-[10px] text-center mt-4 text-white/30 uppercase tracking-widest font-black">
-                No Account Required · Open Instantly
+                Signs In With Your Pampiri Account
               </p>
             </div>
           </div>
@@ -297,8 +297,8 @@ const Hero = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             {/* ── LEFT CONTENT ── */}
-            <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              
+            <div className={`space-y-8 text-center lg:text-left flex flex-col items-center lg:items-start transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+
               {/* Live badge */}
               <div
                 className="inline-flex items-center gap-3 px-4 py-2 rounded-full text-xs font-semibold tracking-wide"
@@ -314,7 +314,7 @@ const Hero = () => {
               </div>
 
               {/* Logo + Brand mark */}
-              <div className="flex items-center gap-5">
+              <div className="flex items-center gap-5 justify-center lg:justify-start">
                 <div className="relative flex-shrink-0">
                   {/* Outer glow ring */}
                   <div
@@ -355,15 +355,15 @@ const Hero = () => {
                   Stop the manual entry <span className="text-gradient-brand">nightmare.</span>
                 </h2>
                 <p className="text-lg leading-relaxed max-w-xl" style={{ color: 'hsl(215 20% 60%)' }}>
-                  Your time is too valuable to spend typing in receipts. Scan them in seconds, let our AI handle the details, and get back to growing your business.
+                  Scan a receipt in seconds and our AI sorts it for you. You check the details and approve them, so mistakes are always easy to fix. Then send a professional invoice or a simple tax summary, all from the same app. Built for gig drivers, small businesses, and fleets across South Africa.
                 </p>
               </div>
 
               {/* Feature pills */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                 {[
                   { Icon: Scan, text: 'Works on Faded Receipts' },
-                  { Icon: FileText, text: 'Ready for your Accountant' },
+                  { Icon: FileText, text: 'You Approve Every Scan' },
                   { Icon: Zap, text: 'Done in Seconds' },
                   { Icon: Shield, text: '100% Private & Secure' },
                 ].map(({ Icon, text }, i) => (
@@ -392,7 +392,7 @@ const Hero = () => {
 
               {/* CTA Buttons */}
               <div
-                className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                className={`flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{ transitionDelay: '400ms' }}
               >
                 {/* Primary: Download on Google Play */}
@@ -440,7 +440,7 @@ const Hero = () => {
 
               {/* Trust bar */}
               <div
-                className="flex flex-wrap items-center gap-6 pt-2"
+                className="flex flex-wrap items-center gap-6 pt-2 justify-center lg:justify-start"
                 style={{ color: 'hsl(215 20% 45%)' }}
               >
                 <div className="flex items-center gap-2 text-sm">
@@ -483,7 +483,7 @@ const Hero = () => {
                 <div className="relative w-72 lg:w-80 mx-auto">
                   <img
                     src={phoneMockup}
-                    alt="Pampiri mobile app — AI receipt scanning interface"
+                    alt="Pampiri mobile app, AI receipt scanning interface"
                     className="w-full h-auto relative z-10 hover:scale-105 transition-transform duration-700"
                     fetchPriority="high"
                     decoding="sync"

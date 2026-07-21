@@ -34,21 +34,21 @@ const Transformation = () => {
                   The Old Way
                 </div>
               </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <div className="p-8 text-center lg:text-left">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 justify-center lg:justify-start">
                   <AlertCircle className="w-5 h-5 text-red-500" />
                   Manual Stress
                 </h3>
                 <ul className="space-y-3 text-sm" style={{ color: 'hsl(215 20% 50%)' }}>
-                  <li className="flex items-start gap-3">
+                  <li className="flex items-start gap-3 justify-center lg:justify-start text-left">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500/50 mt-1.5"></span>
                     Hours spent on manual data entry every week
                   </li>
-                  <li className="flex items-start gap-3">
+                  <li className="flex items-start gap-3 justify-center lg:justify-start text-left">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500/50 mt-1.5"></span>
                     High risk of human error and missed tax deductions
                   </li>
-                  <li className="flex items-start gap-3">
+                  <li className="flex items-start gap-3 justify-center lg:justify-start text-left">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500/50 mt-1.5"></span>
                     Physical receipts fade, get lost, or stained
                   </li>
@@ -74,21 +74,25 @@ const Transformation = () => {
                   The Pampiri Way
                 </div>
               </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <div className="p-8 text-center lg:text-left">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 justify-center lg:justify-start">
                   <CheckCircle2 className="w-5 h-5 text-teal-400" />
                   Effortless Control
                 </h3>
                 <ul className="space-y-3 text-sm" style={{ color: 'hsl(215 20% 70%)' }}>
-                  <li className="flex items-start gap-3">
+                  <li className="flex items-start gap-3 justify-center lg:justify-start text-left">
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5"></span>
-                    Scan and extract data in under 30 seconds
+                    Scan and check receipts in under 30 seconds
                   </li>
-                  <li className="flex items-start gap-3">
+                  <li className="flex items-start gap-3 justify-center lg:justify-start text-left">
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5"></span>
-                    Export perfect spreadsheets directly to your accountant
+                    Export a simple tax pack straight to your accountant
                   </li>
-                  <li className="flex items-start gap-3">
+                  <li className="flex items-start gap-3 justify-center lg:justify-start text-left">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5"></span>
+                    Turn tracked income into a professional invoice in a tap
+                  </li>
+                  <li className="flex items-start gap-3 justify-center lg:justify-start text-left">
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5"></span>
                     Cloud-backed digital copies that never fade or vanish
                   </li>

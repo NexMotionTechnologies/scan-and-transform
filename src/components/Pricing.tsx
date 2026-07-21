@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Check, Star, ArrowRight, Zap, Building2, Users, MessageSquare, Lock, Construction, Smartphone, Mail, Phone, Calculator, ShieldCheck } from 'lucide-react';
+import { Check, Star, ArrowRight, Zap, Building2, Users, MessageSquare, Lock, Construction, Smartphone, Mail, Truck, Minus, Plus, Package } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nexmotiontechnologies.pampiri';
+const SALES_EMAIL = 'mailto:info@nexmotiontechnologies.co.za?subject=Enterprise%20Plan%20Inquiry';
 
 const pricingPlans = [
   {
@@ -15,7 +16,7 @@ const pricingPlans = [
     period: 'for 30 days',
     Icon: Smartphone,
     features: [
-      'Full access to test all features',
+      'Full Personal Pro access, nothing locked',
       'Export to Spreadsheet or PDF',
       'Highly accurate text reading',
       'Full mobile app experience',
@@ -28,23 +29,23 @@ const pricingPlans = [
     accentColor: 'hsl(186 95% 42%)',
     glowColor: 'hsl(186 95% 42% / 0.2)',
     borderColor: 'hsl(186 95% 42% / 0.3)',
-    footerNote: '30-day trial period · No credit card required'
+    footerNote: '500MB storage · No credit card required'
   },
   {
-    name: 'Pro Plan',
-    description: 'Ideal for individuals & freelancers',
+    name: 'Personal Pro',
+    description: 'Ideal for gig drivers & freelancers',
     monthlyPrice: 'R99.00',
     annualPrice: 'R999.00',
     period: 'per month',
     Icon: Zap,
     features: [
-      '150 document scans every month',
+      '200 document scans every month',
       'Rapid batch scanning (multiple at once)',
+      'See exactly what you keep after Uber or Bolt commission',
+      'Pampiri Invoice access for client billing',
       'Export to Spreadsheet or PDF',
-      'Highly accurate text reading',
-      'Safe & private storage',
+      '5GB safe & private storage',
       'Priority email support',
-      'Easily search past receipts',
     ],
     ctaText: 'Get Started',
     ctaLink: PLAY_STORE_URL,
@@ -56,65 +57,80 @@ const pricingPlans = [
     footerNote: 'Active & purchasable via PayFast'
   },
   {
-    name: 'Business Plan',
-    description: 'Perfect for small teams',
-    monthlyPrice: 'R499.99',
-    annualPrice: 'R5,490.00',
+    name: 'Personal Business',
+    description: 'Perfect for small business owners',
+    monthlyPrice: 'R799.00',
+    annualPrice: 'R7,990.00',
     period: 'per month',
     Icon: Building2,
     features: [
       '1,500 document scans every month',
-      'Ready-to-use accountant templates',
-      'Detailed monthly reports',
-      'Unlimited rapid batch scanning',
-      'Share with your team or accountant',
-      'Know exactly what you spend',
-      'Direct phone & email support',
+      'Budget monitoring with category alerts',
+      'Branded, customisable invoices',
+      'Cloud export to Google Drive & OneDrive',
+      'Ready-to-use accountant tax packs',
+      'Share access with your team or accountant',
+      '20GB storage · Direct phone & email support',
     ],
-    ctaText: 'Coming Soon',
-    ctaLink: '#',
+    ctaText: 'Get Started',
+    ctaLink: PLAY_STORE_URL,
     popular: false,
-    status: 'construction',
+    status: 'active',
     accentColor: 'hsl(258 90% 68%)',
     glowColor: 'hsl(258 90% 68% / 0.2)',
     borderColor: 'hsl(258 90% 68% / 0.3)',
-    footerNote: 'Under Construction — Coming Soon'
+    footerNote: 'Active & purchasable via PayFast'
   },
   {
     name: 'Enterprise',
-    description: 'For firms & large organizations',
-    monthlyPrice: 'R2,499.99',
-    annualPrice: 'R27,500.00',
-    period: 'per month',
+    description: 'For firms & large organisations',
+    monthlyPrice: 'Contact Sales',
+    annualPrice: 'Contact Sales',
+    anchorPrice: 'From R5,999 / month',
+    period: 'custom',
     Icon: MessageSquare,
     features: [
       '10,000 document scans every month',
-      'Direct connection to your software',
-      'Custom reports for your firm',
+      'Direct connection to your accounting software',
+      'Custom reports built for your firm',
       'Service Level Agreement (SLA)',
       'Your own dedicated account manager',
       'Skip the line 24/7 support',
       'We train your entire team',
-      'Maximum data security',
+      '100GB storage · Maximum data security',
     ],
     ctaText: 'Contact Sales',
-    ctaLink: '#',
+    ctaLink: SALES_EMAIL,
     popular: false,
-    status: 'locked',
+    status: 'contact',
     accentColor: 'hsl(142 76% 45%)',
     glowColor: 'hsl(142 76% 45% / 0.2)',
     borderColor: 'hsl(142 76% 45% / 0.3)',
-    footerNote: 'Unlocked Later — Coming Soon'
+    footerNote: '30-day trial while we set up your environment'
   },
 ];
+
+const FLEET_BASE = 299;
+const FLEET_PER_SEAT = 99;
+const FLEET_PER_VEHICLE = 49;
+const FLEET_STORAGE_BLOCK = 29; // per +1GB block
+
+const formatZAR = (value: number) =>
+  `R${value.toLocaleString('en-ZA', { minimumFractionDigits: 0 })}`;
 
 const Pricing = () => {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
   const [isAnnual, setIsAnnual] = useState(false);
+  const [seats, setSeats] = useState(0);
+  const [vehicles, setVehicles] = useState(0);
+  const [storageBlocks, setStorageBlocks] = useState(0);
   const { toast } = useToast();
 
+  const fleetTotal =
+    FLEET_BASE + seats * FLEET_PER_SEAT + vehicles * FLEET_PER_VEHICLE + storageBlocks * FLEET_STORAGE_BLOCK;
+
   const handlePlanClick = (plan: typeof pricingPlans[0], e: React.MouseEvent) => {
-    if (plan.status !== 'active') {
+    if (plan.status === 'construction' || plan.status === 'locked') {
       e.preventDefault();
       toast({
         title: `${plan.name} is currently under construction`,
@@ -123,6 +139,43 @@ const Pricing = () => {
       });
     }
   };
+
+  const Stepper = ({
+    value,
+    onChange,
+    max,
+    accentColor,
+  }: {
+    value: number;
+    onChange: (v: number) => void;
+    max: number;
+    accentColor: string;
+  }) => (
+    <div className="flex items-center gap-3">
+      <button
+        onClick={() => onChange(Math.max(0, value - 1))}
+        className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+        style={{ background: 'hsl(225 30% 16%)', border: '1px solid hsl(225 30% 24%)', color: 'hsl(215 20% 70%)' }}
+        aria-label="Decrease"
+      >
+        <Minus className="w-4 h-4" />
+      </button>
+      <span
+        className="w-10 text-center text-lg font-black"
+        style={{ color: 'white', fontFamily: "'Space Grotesk', sans-serif" }}
+      >
+        {value}
+      </span>
+      <button
+        onClick={() => onChange(Math.min(max, value + 1))}
+        className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+        style={{ background: `${accentColor.replace(')', ' / 0.15)')}`, border: `1px solid ${accentColor.replace(')', ' / 0.4)')}`, color: accentColor }}
+        aria-label="Increase"
+      >
+        <Plus className="w-4 h-4" />
+      </button>
+    </div>
+  );
 
   return (
     <section
@@ -186,10 +239,10 @@ const Pricing = () => {
               >
                 Annual
               </Label>
-              <span 
+              <span
                 className={`hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-black transition-all duration-500 uppercase tracking-tighter ${
-                  isAnnual 
-                    ? 'bg-teal-500/20 border-teal-500/50 text-teal-400 scale-110 shadow-[0_0_15px_rgba(20,184,166,0.4)]' 
+                  isAnnual
+                    ? 'bg-teal-500/20 border-teal-500/50 text-teal-400 scale-110 shadow-[0_0_15px_rgba(20,184,166,0.4)]'
                     : 'bg-teal-500/10 border-teal-500/30 text-teal-400/60 opacity-70'
                 } border`}
               >
@@ -203,7 +256,7 @@ const Pricing = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-end">
           {pricingPlans.map((plan, index) => {
             const isHovered = hoveredPlan === index;
-            const isInactive = plan.status !== 'active';
+            const isInactive = plan.status === 'construction' || plan.status === 'locked';
 
             // Stagger logic: height increases with index
             const extraPadding = index * 12; // Increases card padding visually
@@ -297,7 +350,7 @@ const Pricing = () => {
                   <div className="relative z-10 mb-8 flex flex-col items-center lg:items-start">
                     <div className="flex items-baseline gap-1.5 justify-center lg:justify-start">
                       <span
-                        className="text-4xl font-black"
+                        className={plan.status === 'contact' ? 'text-2xl font-black' : 'text-4xl font-black'}
                         style={{
                           color: plan.popular ? 'hsl(32 98% 55%)' : 'white',
                           fontFamily: "'Space Grotesk', sans-serif",
@@ -306,8 +359,17 @@ const Pricing = () => {
                         {isAnnual ? plan.annualPrice : plan.monthlyPrice}
                       </span>
                     </div>
+                    {plan.anchorPrice && (
+                      <p className="text-xs font-semibold mt-1" style={{ color: plan.accentColor }}>
+                        {plan.anchorPrice}
+                      </p>
+                    )}
                     <p className="text-xs font-medium mt-1.5 text-center lg:text-left" style={{ color: 'hsl(215 20% 40%)' }}>
-                      {plan.name === '30-Day Free Trial' ? plan.period : (isAnnual ? 'per year' : 'per month')}
+                      {plan.status === 'contact'
+                        ? 'billed to fit your organisation'
+                        : plan.name === '30-Day Free Trial'
+                          ? plan.period
+                          : (isAnnual ? 'per year' : 'per month')}
                     </p>
                   </div>
 
@@ -355,6 +417,7 @@ const Pricing = () => {
                             }
                       }
                     >
+                      {plan.status === 'contact' && <Mail className="w-4 h-4" />}
                       {plan.ctaText}
                       {plan.status === 'active' && <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />}
                       {isInactive && plan.status === 'locked' && <Lock className="w-4 h-4" />}
@@ -371,13 +434,134 @@ const Pricing = () => {
           })}
         </div>
 
+        {/* Fleet Pro: composable pricing + live calculator */}
+        <div id="fleet-pricing" className="max-w-5xl mx-auto mt-24 scroll-mt-32">
+          <div className="text-center mb-12">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
+              style={{
+                background: 'hsl(142 76% 45% / 0.08)',
+                border: '1px solid hsl(142 76% 45% / 0.25)',
+                color: 'hsl(142 76% 55%)',
+              }}
+            >
+              <Truck className="w-3.5 h-3.5" />
+              For Fleet Managers
+            </div>
+            <h3 className="text-3xl lg:text-5xl font-black text-white mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <span className="text-gradient-teal">Fleet Pro.</span> Pay for exactly what you run.
+            </h3>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'hsl(215 20% 55%)' }}>
+              No WhatsApp chaos, no lost slips. Every driver scans, every receipt lands in your approval inbox automatically. Build your plan below and watch the total update live, with no surprises at checkout.
+            </p>
+          </div>
+
+          <div
+            className="relative rounded-3xl p-8 lg:p-10 grid lg:grid-cols-2 gap-10"
+            style={{
+              background: 'linear-gradient(160deg, hsl(225 30% 13%), hsl(225 28% 11%))',
+              border: '1px solid hsl(142 76% 45% / 0.25)',
+              boxShadow: '0 12px 40px hsl(142 76% 45% / 0.08), 0 4px 20px hsl(225 35% 4% / 0.5)',
+            }}
+          >
+            {/* Configurator */}
+            <div className="space-y-6">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-bold text-white">Fleet Pro base</span>
+                  <span className="text-sm font-bold" style={{ color: 'hsl(142 76% 55%)' }}>{formatZAR(FLEET_BASE)}/mo</span>
+                </div>
+                <p className="text-xs" style={{ color: 'hsl(215 20% 50%)' }}>
+                  Fleet Manager account, 1 vehicle, receipt routing & approval inbox, branded invoicing, 10GB storage.
+                </p>
+              </div>
+
+              <div className="h-px" style={{ background: 'hsl(225 30% 20%)' }} />
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-sm font-bold text-white flex items-center gap-2">
+                    <Users className="w-4 h-4" style={{ color: 'hsl(142 76% 55%)' }} />
+                    Driver seats
+                  </span>
+                  <p className="text-xs mt-1" style={{ color: 'hsl(215 20% 50%)' }}>R99/driver/month · 200 scans each</p>
+                </div>
+                <Stepper value={seats} onChange={setSeats} max={100} accentColor="hsl(142 76% 45%)" />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-sm font-bold text-white flex items-center gap-2">
+                    <Truck className="w-4 h-4" style={{ color: 'hsl(142 76% 55%)' }} />
+                    Additional vehicles
+                  </span>
+                  <p className="text-xs mt-1" style={{ color: 'hsl(215 20% 50%)' }}>R49/vehicle/month · beyond the first</p>
+                </div>
+                <Stepper value={vehicles} onChange={setVehicles} max={50} accentColor="hsl(142 76% 45%)" />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-sm font-bold text-white flex items-center gap-2">
+                    <Package className="w-4 h-4" style={{ color: 'hsl(142 76% 55%)' }} />
+                    Extra storage
+                  </span>
+                  <p className="text-xs mt-1" style={{ color: 'hsl(215 20% 50%)' }}>+1GB blocks at R29/month</p>
+                </div>
+                <Stepper value={storageBlocks} onChange={setStorageBlocks} max={20} accentColor="hsl(142 76% 45%)" />
+              </div>
+
+              <p className="text-[11px] pt-2" style={{ color: 'hsl(215 20% 40%)' }}>
+                Storage add-ons are also available in +500MB/R19 blocks, and apply to every plan tier, not just Fleet Pro.
+              </p>
+            </div>
+
+            {/* Live total */}
+            <div
+              className="rounded-2xl p-8 flex flex-col items-center justify-center text-center"
+              style={{ background: 'hsl(222 30% 9%)', border: '1px solid hsl(142 76% 45% / 0.2)' }}
+            >
+              <span className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: 'hsl(215 20% 45%)' }}>
+                Your monthly total
+              </span>
+              <span
+                className="text-6xl font-black mb-2 transition-all duration-300"
+                style={{ color: 'hsl(142 76% 55%)', fontFamily: "'Space Grotesk', sans-serif" }}
+              >
+                {formatZAR(fleetTotal)}
+              </span>
+              <span className="text-sm mb-8" style={{ color: 'hsl(215 20% 50%)' }}>
+                per month · {seats} driver{seats === 1 ? '' : 's'} · {1 + vehicles} vehicle{vehicles === 0 ? '' : 's'}
+              </span>
+
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/btn flex items-center justify-center gap-2 w-full py-4 px-4 rounded-2xl text-sm font-bold transition-all duration-300 hover:scale-[1.02] active:scale-95"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(142 76% 45%), hsl(160 80% 45%))',
+                  color: 'hsl(222 84% 5%)',
+                  boxShadow: '0 4px 20px hsl(142 76% 45% / 0.35)',
+                }}
+              >
+                Set Up My Fleet
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </a>
+              <p className="text-[10px] mt-4" style={{ color: 'hsl(215 20% 40%)' }}>
+                e.g. 5 drivers, 3 vehicles = R892/month
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom note */}
         <div className="text-center mt-16 max-w-2xl mx-auto p-8 rounded-3xl" style={{ border: '1px dashed hsl(225 30% 18%)' }}>
           <p className="text-sm leading-relaxed" style={{ color: 'hsl(215 20% 45%)' }}>
             Looking for something specific? We offer a <span className="text-white font-bold">30-day trial</span> on Enterprise plans while our team setups your custom environment.{' '}
             <br className="hidden sm:block" />
             <a
-              href="mailto:info@nexmotiontechnologies.co.za"
+              href={SALES_EMAIL}
               className="inline-flex items-center gap-1 font-bold transition-colors hover:text-white mt-4"
               style={{ color: 'hsl(32 98% 52%)' }}
             >

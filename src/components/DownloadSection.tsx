@@ -96,7 +96,7 @@ const DownloadSection = () => {
                             className="text-xl leading-relaxed max-w-3xl mx-auto mb-12"
                             style={{ color: 'hsl(215 20% 55%)' }}
                         >
-                            Join thousands of smart business owners who have reclaimed their weekends from manual entry. Get Pampiri now and see the difference in seconds.
+                            Join thousands of small business owners, gig drivers, and fleet managers who have reclaimed their weekends from manual entry. Get Pampiri now and see the difference in seconds.
                         </p>
 
                         {/* Primary CTA */}
@@ -201,6 +201,17 @@ const DownloadSection = () => {
                                 </p>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Referral teaser */}
+                    <div
+                        className="flex items-center justify-center gap-3 mt-10 mx-auto max-w-xl px-6 py-4 rounded-2xl text-center"
+                        style={{ background: 'hsl(32 98% 52% / 0.06)', border: '1px solid hsl(32 98% 52% / 0.2)' }}
+                    >
+                        <Star className="w-4 h-4 flex-shrink-0" style={{ color: 'hsl(32 98% 55%)' }} />
+                        <p className="text-sm font-medium" style={{ color: 'hsl(215 20% 65%)' }}>
+                            Refer a friend. <span className="text-white font-bold">You both get a month free.</span>
+                        </p>
                     </div>
 
                     {/* Rating / social proof */}

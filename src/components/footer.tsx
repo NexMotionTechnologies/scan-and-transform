@@ -93,9 +93,9 @@ const Footer = () => {
             </div>
 
             <p className="text-sm leading-relaxed mb-6 max-w-sm mx-auto lg:mx-0" style={{ color: 'hsl(215 20% 45%)' }}>
-              AI-powered receipt scanning that transforms physical documents into
-              clean, organized digital data. Built for businesses, accountants, and
-              individuals who value efficiency.
+              AI-powered document scanning, simple tax tools, and unlimited
+              invoicing for South African small businesses, gig drivers, and
+              vehicle fleets, all in one app.
             </p>
 
             {/* Socials */}

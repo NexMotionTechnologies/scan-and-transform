@@ -7,8 +7,30 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
+      // Consent Mode: deny analytics/ad storage by default until the user
+      // accepts via the cookie banner (src/components/CookieConsent.tsx).
+      // Keeps GA from attempting to set tracking cookies pre-consent, which
+      // is both a POPIA requirement and what strict browsers (Brave Shields,
+      // Firefox ETP, Safari ITP) already assume/enforce anyway.
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+      try {
+        if (localStorage.getItem('pampiri_cookie_consent') === 'accepted') {
+          gtag('consent', 'update', {
+            analytics_storage: 'granted',
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+          });
+        }
+      } catch (e) {}
+
+      gtag('js', new Date());
       gtag('config', 'G-MMJYQYCV38');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

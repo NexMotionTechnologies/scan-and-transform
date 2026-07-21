@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Camera, Brain, Zap, FileSpreadsheet, Edit3, Shield, TrendingUp, Users, Clock, Building2 } from 'lucide-react';
+import { Camera, Brain, Zap, UserCheck, MapPin, Landmark, TrendingUp, Users, Clock } from 'lucide-react';
 
 const features = [
   {
@@ -30,59 +30,38 @@ const features = [
     borderColor: 'hsl(258 90% 68% / 0.3)',
   },
   {
-    Icon: FileSpreadsheet,
-    title: 'Ready for your Accountant',
+    Icon: UserCheck,
+    title: 'You Review, You Approve',
     description:
-      'At the end of the month, simply tap export. Send a neat spreadsheet directly to your accountant or tax practitioner.',
+      'Our AI reads every receipt first, but nothing gets saved without your say-so. Check the details, fix anything that looks wrong, then approve it in one tap.',
+    accentColor: 'hsl(200 90% 50%)',
+    glowColor: 'hsl(200 90% 50% / 0.2)',
+    borderColor: 'hsl(200 90% 50% / 0.3)',
+  },
+  {
+    Icon: Landmark,
+    title: 'Sorted for Tax Season',
+    description:
+      'Every expense is filed under the right category automatically, the same ones your accountant or tax return needs. We can even match it against your bank statement for you.',
     accentColor: 'hsl(142 76% 45%)',
     glowColor: 'hsl(142 76% 45% / 0.2)',
     borderColor: 'hsl(142 76% 45% / 0.3)',
   },
   {
-    Icon: Edit3,
-    title: 'You\'re Always in Control',
+    Icon: MapPin,
+    title: 'Travel Logbook, Automated',
     description:
-      'Need to fix a typo or add a quick note? Review everything before it’s saved, ensuring your records are exactly how you want them.',
+      'One tap to start and stop a trip. Scanned fuel and toll receipts link themselves to the drive, ready to export as a proper travel logbook.',
     accentColor: 'hsl(38 100% 55%)',
     glowColor: 'hsl(38 100% 55% / 0.2)',
     borderColor: 'hsl(38 100% 55% / 0.3)',
-  },
-  {
-    Icon: Shield,
-    title: 'Bank-Level Security',
-    description:
-      'Your financial information is extremely private. That\'s why we use strict security measures to ensure your data is safe and secure.',
-    accentColor: 'hsl(200 90% 50%)',
-    glowColor: 'hsl(200 90% 50% / 0.2)',
-    borderColor: 'hsl(200 90% 50% / 0.3)',
   },
 ];
 
 const stats = [
   { Icon: TrendingUp, value: '99.5%', label: 'Scanning Accuracy', color: 'hsl(32 98% 52%)' },
-  { Icon: Users, value: '15,000+', label: 'Fields Extracted', color: 'hsl(186 95% 42%)' },
+  { Icon: Users, value: '15,000+', label: 'Details Captured', color: 'hsl(186 95% 42%)' },
   { Icon: Clock, value: '100+', label: 'Hours Saved Weekly', color: 'hsl(258 90% 68%)' },
-];
-
-const personas = [
-  {
-    title: 'Solopreneurs',
-    usage: 'Reclaim your weekends. Track every coffee meeting and travel expense automatically so you never scramble at tax time.',
-    Icon: Users,
-    color: 'hsl(32 98% 52%)',
-  },
-  {
-    title: 'Small Retailers',
-    usage: 'Stop losing money to lost slips. Snap supplier invoices as they arrive and keep your margins healthy and documented.',
-    Icon: Building2,
-    color: 'hsl(186 95% 42%)',
-  },
-  {
-    title: 'On-Site Teams',
-    usage: 'No more crumpled receipts in truck consoles. Contractors capture material costs instantly, ensuring every job stays profitable.',
-    Icon: Zap,
-    color: 'hsl(258 90% 68%)',
-  },
 ];
 
 const Features = () => {
@@ -146,11 +125,11 @@ const Features = () => {
             className="text-4xl lg:text-6xl font-black mb-6 text-white"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Your Personal{' '}
-            <span className="text-gradient-amber">Filing Assistant</span>
+            Built for{' '}
+            <span className="text-gradient-amber">South African</span> Finances
           </h2>
           <p className="text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'hsl(215 20% 55%)' }}>
-            Spend less time managing paperwork and more time doing what you actually love. We handle the boring stuff.
+            Spend less time managing paperwork and more time doing what you actually love. From everyday scanning to tax season, we handle the boring stuff.
           </p>
         </div>
 
@@ -228,6 +207,11 @@ const Features = () => {
                   <p className="text-sm leading-relaxed" style={{ color: 'hsl(215 20% 52%)' }}>
                     {feature.description}
                   </p>
+                  {feature.title === 'Sorted for Tax Season' && (
+                    <p className="text-xs pt-1" style={{ color: 'hsl(215 20% 40%)' }}>
+                      Plus a simple petty cash tracker and exports formatted for your accounting software.
+                    </p>
+                  )}
                 </div>
 
                 {/* Corner accent */}
@@ -265,48 +249,6 @@ const Features = () => {
                 <span className="text-sm font-medium" style={{ color: 'hsl(215 20% 45%)' }}>
                   {label}
                 </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Who is this for? Section */}
-        <div className="mt-32">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Built for the <span className="text-gradient-teal">Real World</span>
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto" style={{ color: 'hsl(215 20% 55%)' }}>
-               Pampiri isn't just an app—it's a tool built for the specific ways you work every single day.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {personas.map((persona, i) => (
-              <div 
-                key={i} 
-                className="relative p-8 rounded-3xl border border-white/5 transition-all duration-500 hover:border-white/10 group bg-white/2 hover:-translate-y-2 flex flex-col items-center lg:items-start text-center lg:text-left"
-                style={{ 
-                  background: 'hsl(222 30% 11%)',
-                  boxShadow: '0 4px 20px hsl(225 35% 4% / 0.4)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = `0 8px 30px ${persona.color}10`;
-                  e.currentTarget.style.borderColor = `${persona.color}30`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 4px 20px hsl(225 35% 4% / 0.4)';
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
-                }}
-              >
-                <div 
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: `${persona.color}15`, border: `1px solid ${persona.color}30` }}
-                >
-                  <persona.Icon className="w-6 h-6" style={{ color: persona.color }} />
-                </div>
-                <h4 className="text-xl font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{persona.title}</h4>
-                <p className="text-sm leading-relaxed" style={{ color: 'hsl(215 20% 50%)' }}>{persona.usage}</p>
               </div>
             ))}
           </div>

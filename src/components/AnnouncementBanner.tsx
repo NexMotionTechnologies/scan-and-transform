@@ -55,7 +55,7 @@ const AnnouncementBanner = ({ onClose }: AnnouncementBannerProps) => {
               </p>
               <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-white/30" />
               <p className="text-[9px] sm:text-xs font-bold text-white/90 leading-tight">
-                Professional Invoicing. Free for everyone. Zero Design Skills Required.
+                Unlimited, fully compliant invoicing. Included from Personal Pro.
               </p>
             </div>
 
@@ -66,7 +66,7 @@ const AnnouncementBanner = ({ onClose }: AnnouncementBannerProps) => {
               rel="noopener noreferrer"
               className="group whitespace-nowrap flex items-center gap-2 px-4 py-1.5 bg-white rounded-xl text-[10px] sm:text-xs font-black text-black hover:bg-black hover:text-white transition-all duration-300 shadow-xl shadow-black/10 active:scale-95"
             >
-              Get Started Free
+              Open Invoice
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

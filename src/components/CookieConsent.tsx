@@ -5,6 +5,26 @@ const COOKIE_KEY = 'pampiri_cookie_consent';
 
 type ConsentState = 'accepted' | 'declined' | null;
 
+declare global {
+    interface Window {
+        gtag?: (...args: unknown[]) => void;
+    }
+}
+
+const updateAnalyticsConsent = (granted: boolean) => {
+    // Guarded: gtag is loaded via an external script (index.html) that
+    // trackers/ad-blockers (Brave Shields, uBlock, strict Firefox ETP) may
+    // block outright. In that case there's nothing to update, which is fine.
+    if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+            analytics_storage: granted ? 'granted' : 'denied',
+            ad_storage: granted ? 'granted' : 'denied',
+            ad_user_data: granted ? 'granted' : 'denied',
+            ad_personalization: granted ? 'granted' : 'denied',
+        });
+    }
+};
+
 const CookieConsent = () => {
     const [consent, setConsent] = useState<ConsentState>(null);
     const [visible, setVisible] = useState(false);
@@ -25,12 +45,14 @@ const CookieConsent = () => {
     const handleAccept = () => {
         localStorage.setItem(COOKIE_KEY, 'accepted');
         setConsent('accepted');
+        updateAnalyticsConsent(true);
         dismiss();
     };
 
     const handleDecline = () => {
         localStorage.setItem(COOKIE_KEY, 'declined');
         setConsent('declined');
+        updateAnalyticsConsent(false);
         dismiss();
     };
 
