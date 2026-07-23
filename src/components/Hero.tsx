@@ -226,14 +226,19 @@ const Hero = () => {
           isPromoExpanded ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="h-full bg-background/95 backdrop-blur-3xl border-r border-white/10 relative flex flex-col items-center justify-center p-8 lg:p-12 overflow-hidden">
+        <div className="h-full bg-background/95 backdrop-blur-3xl border-r border-white/10 relative flex flex-col items-center justify-start sm:justify-center p-6 sm:p-8 lg:p-12 overflow-y-auto">
           {/* Animated Background Orbs for the Panel */}
-          <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] opacity-20 bg-primary" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-[100px] opacity-20 bg-secondary" />
+          <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] opacity-20 bg-primary pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-[100px] opacity-20 bg-secondary pointer-events-none" />
           
           <button 
-            onClick={() => setIsPromoExpanded(false)}
-            className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors text-white/60 hover:text-white"
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsPromoExpanded(false);
+            }}
+            className="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/10 sm:bg-transparent hover:bg-white/20 transition-all text-white/80 hover:text-white cursor-pointer active:scale-95 touch-manipulation"
+            aria-label="Close Launch Details"
           >
             <X className="w-6 h-6" />
           </button>

@@ -33,7 +33,7 @@ const pricingPlans = [
   },
   {
     name: 'Personal Pro',
-    description: 'Ideal for gig drivers & freelancers',
+    description: 'Ideal for casual drivers & freelancers',
     monthlyPrice: 'R99.00',
     annualPrice: 'R999.00',
     period: 'per month',
@@ -49,7 +49,7 @@ const pricingPlans = [
     ],
     ctaText: 'Get Started',
     ctaLink: PLAY_STORE_URL,
-    popular: true,
+    popular: false,
     status: 'active',
     accentColor: 'hsl(32 98% 52%)',
     glowColor: 'hsl(32 98% 52% / 0.25)',
@@ -57,19 +57,44 @@ const pricingPlans = [
     footerNote: 'Active & purchasable via PayFast'
   },
   {
+    name: 'Gig Pro',
+    description: 'For full-time gig drivers & heavy users',
+    monthlyPrice: 'R199.00',
+    annualPrice: 'R1,990.00',
+    period: 'per month',
+    Icon: Truck,
+    features: [
+      '500 document scans every month',
+      'High-volume batch scanning',
+      'Profitability dashboard (Uber, Bolt, etc.)',
+      'Pampiri Invoice access for client billing',
+      'Export to Spreadsheet or PDF',
+      '5GB safe & private storage',
+      'Priority email support',
+    ],
+    ctaText: 'Get Started',
+    ctaLink: PLAY_STORE_URL,
+    popular: true,
+    status: 'active',
+    accentColor: 'hsl(174 84% 45%)',
+    glowColor: 'hsl(174 84% 45% / 0.25)',
+    borderColor: 'hsl(174 84% 45% / 0.5)',
+    footerNote: 'Active & purchasable via PayFast'
+  },
+  {
     name: 'Personal Business',
-    description: 'Perfect for small business owners',
+    description: 'Perfect for small businesses & team accounts',
     monthlyPrice: 'R799.00',
     annualPrice: 'R7,990.00',
     period: 'per month',
     Icon: Building2,
     features: [
       '1,500 document scans every month',
+      'Includes up to 3 team members (500 scans each)',
       'Budget monitoring with category alerts',
       'Branded, customisable invoices',
       'Cloud export to Google Drive & OneDrive',
       'Ready-to-use accountant tax packs',
-      'Share access with your team or accountant',
       '20GB storage · Direct phone & email support',
     ],
     ctaText: 'Get Started',
@@ -253,7 +278,7 @@ const Pricing = () => {
         </div>
 
         {/* Plans grid - items-end creates the growing baseline effect */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-end">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 max-w-[90rem] mx-auto items-end">
           {pricingPlans.map((plan, index) => {
             const isHovered = hoveredPlan === index;
             const isInactive = plan.status === 'construction' || plan.status === 'locked';
