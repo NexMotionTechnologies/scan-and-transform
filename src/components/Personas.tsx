@@ -28,7 +28,7 @@ const personas = [
       'Invoice clients directly for freelance work',
       'Build a streak and earn badges for staying on top of it',
     ],
-    ctaLabel: 'See Personal Pro plan',
+    ctaLabel: 'See Gig Pro plan',
     ctaTarget: 'pricing',
     accentColor: 'hsl(32 98% 52%)',
     glowColor: 'hsl(32 98% 52% / 0.2)',
