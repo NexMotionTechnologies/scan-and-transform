@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Target, Eye, Heart, Users, Code, Lightbulb, Shield, HandshakeIcon, TrendingUp, Database, Palette, Briefcase, TrendingUpIcon } from 'lucide-react';
+import { useSeo } from '@/hooks/use-seo';
 
 const AboutUs = () => {
+  useSeo({
+    title: 'About Us | Pampiri by NexMotion Technologies',
+    description:
+      'Meet the team behind Pampiri, the AI-powered receipt scanning app built in South Africa for gig drivers, small businesses and fleets.',
+    path: '/about-us',
+  });
+
   // NexMotion Technologies Core Team
   const nexmotionTeam = [
     { name: "Casious Mookamedi", role: "Founder & CEO", icon: Briefcase },

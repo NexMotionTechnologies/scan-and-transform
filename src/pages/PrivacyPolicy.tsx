@@ -2,8 +2,16 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Shield, FileText, Clock, AlertTriangle, CheckCircle, Target, User, CreditCard, Settings, BarChart3, Phone, Mail, Building, Download } from 'lucide-react';
+import { useSeo } from '@/hooks/use-seo';
 
 const PrivacyPolicy = () => {
+  useSeo({
+    title: 'Privacy Policy & Terms | Pampiri',
+    description:
+      "Read Pampiri's privacy policy, POPIA compliance details, and terms of service for our AI-powered receipt scanning app.",
+    path: '/privacy-policy',
+  });
+
   const getTabFromLocation = (): 'terms' | 'privacy' => {
     if (typeof window === 'undefined') return 'privacy';
     const params = new URLSearchParams(window.location.search);

@@ -93,7 +93,7 @@ const pricingPlans = [
       'Includes up to 3 team members (500 scans each)',
       'Budget monitoring with category alerts',
       'Branded, customisable invoices',
-      'Cloud export to Google Drive & OneDrive',
+      'See your whole team\'s scans in one shared feed',
       'Ready-to-use accountant tax packs',
       '20GB storage · Direct phone & email support',
     ],

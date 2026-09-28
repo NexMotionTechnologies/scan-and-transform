@@ -3,8 +3,16 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowLeft, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { useSeo } from '@/hooks/use-seo';
 
 const Contact = () => {
+  useSeo({
+    title: 'Contact Pampiri | Get in Touch',
+    description:
+      "Questions about Pampiri's AI receipt scanning app? Reach our South African support team by email or the contact form below.",
+    path: '/contact',
+  });
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

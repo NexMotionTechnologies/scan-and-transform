@@ -1,6 +1,7 @@
 import { Download, Smartphone, Zap, Target, ShieldCheck, ArrowRight, Star } from 'lucide-react';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nexmotiontechnologies.pampiri';
+const TESTFLIGHT_URL = 'https://testflight.apple.com/join/TtMntrZh';
 
 const GooglePlayIcon = () => (
     <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
@@ -122,31 +123,29 @@ const DownloadSection = () => {
                                 <ArrowRight className="w-5 h-5 ml-auto group-hover:translate-x-1 transition-transform" />
                             </a>
 
-                            {/* iOS Coming Soon */}
-                            <div
-                                className="flex items-center gap-4 px-8 py-5 rounded-2xl cursor-not-allowed select-none"
+                            {/* iOS Beta via TestFlight */}
+                            <a
+                                href={TESTFLIGHT_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center gap-4 px-8 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1"
                                 style={{
                                     background: 'hsl(225 30% 12%)',
-                                    border: '1px solid hsl(225 30% 20%)',
+                                    border: '1px solid hsl(186 95% 42% / 0.4)',
                                     minWidth: '240px',
-                                    opacity: 0.6,
                                 }}
                             >
-                                <Smartphone className="w-7 h-7" style={{ color: 'hsl(215 20% 50%)' }} />
+                                <Smartphone className="w-7 h-7" style={{ color: 'hsl(186 95% 42%)' }} />
                                 <div className="text-left">
-                                    <div className="text-xs font-medium leading-none mb-1" style={{ color: 'hsl(215 20% 45%)' }}>Coming Soon to</div>
-                                    <div
-                                        className="text-lg font-black leading-none"
-                                        style={{ color: 'hsl(215 20% 55%)' }}
-                                    >
-                                        App Store
-                                    </div>
+                                    <div className="text-xs font-medium leading-none mb-1" style={{ color: 'hsl(186 95% 55%)' }}>iOS Beta via</div>
+                                    <div className="text-lg font-black leading-none text-white">TestFlight</div>
                                 </div>
-                            </div>
+                                <ArrowRight className="w-5 h-5 ml-auto group-hover:translate-x-1 transition-transform" style={{ color: 'hsl(186 95% 42%)' }} />
+                            </a>
                         </div>
 
                         {/* Direct link */}
-                        <p className="text-sm mb-12" style={{ color: 'hsl(215 20% 38%)' }}>
+                        <p className="text-sm mb-2" style={{ color: 'hsl(215 20% 38%)' }}>
                             Or scan the QR code in the app store ·{' '}
                             <a
                                 href={PLAY_STORE_URL}
@@ -157,6 +156,19 @@ const DownloadSection = () => {
                             >
                                 Direct link →
                             </a>
+                        </p>
+                        <p className="text-sm mb-12" style={{ color: 'hsl(215 20% 38%)' }}>
+                            iOS is in public beta — you'll need the free{' '}
+                            <a
+                                href="https://apps.apple.com/app/testflight/id899247664"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-medium transition-colors hover:underline"
+                                style={{ color: 'hsl(186 95% 55%)' }}
+                            >
+                                TestFlight
+                            </a>{' '}
+                            app from Apple to join.
                         </p>
                     </div>
 

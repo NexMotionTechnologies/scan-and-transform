@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Scan, FileText, Zap, Menu, X, Download, ArrowRight, Shield, Sparkles, Award } from 'lucide-react';
+import { Scan, FileText, Zap, Menu, X, Download, ArrowRight, Shield, Sparkles, Award, Smartphone } from 'lucide-react';
 import heroLogo from '@/assets/pampiri-hero-logo.png';
 import phoneMockup from '@/assets/phone-mockup-3d.png';
 import heroVideo from '@/assets/video.mp4';
 import AnnouncementBanner from './AnnouncementBanner';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nexmotiontechnologies.pampiri';
+const TESTFLIGHT_URL = 'https://testflight.apple.com/join/TtMntrZh';
 
 const GooglePlayIcon = () => (
   <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
@@ -297,16 +298,16 @@ const Hero = () => {
       </div>
 
       {/* ── MAIN CONTENT ── */}
-      <div className={`flex-1 flex items-center justify-center relative z-10 ${isBannerVisible ? 'pt-40' : 'pt-24'} pb-16`}>
+      <div className={`flex-1 flex items-center justify-center relative z-10 ${isBannerVisible ? 'pt-32' : 'pt-20'} pb-8`}>
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
 
             {/* ── LEFT CONTENT ── */}
-            <div className={`space-y-8 text-center lg:text-left flex flex-col items-center lg:items-start transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <div className={`space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
 
               {/* Live badge */}
               <div
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full text-xs font-semibold tracking-wide"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide"
                 style={{
                   background: 'hsl(142 76% 45% / 0.1)',
                   border: '1px solid hsl(142 76% 45% / 0.3)',
@@ -319,7 +320,7 @@ const Hero = () => {
               </div>
 
               {/* Logo + Brand mark */}
-              <div className="flex items-center gap-5 justify-center lg:justify-start">
+              <div className="flex items-center gap-4 justify-center lg:justify-start">
                 <div className="relative flex-shrink-0">
                   {/* Outer glow ring */}
                   <div
@@ -333,7 +334,7 @@ const Hero = () => {
                   />
                   <img
                     src={heroLogo}
-                    className="relative w-20 h-20 logo-glow"
+                    className="relative w-14 h-14 lg:w-16 lg:h-16 logo-glow"
                     alt="Pampiri Logo"
                     fetchPriority="high"
                     decoding="sync"
@@ -341,13 +342,13 @@ const Hero = () => {
                 </div>
                 <div>
                   <h1
-                    className="text-6xl lg:text-8xl font-black tracking-tight leading-none"
+                    className="text-4xl lg:text-6xl font-black tracking-tight leading-none"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     <span className="text-white">Pam</span>
                     <span className="text-gradient-amber">piri</span>
                   </h1>
-                  <p className="text-base font-medium tracking-widest uppercase mt-1"
+                  <p className="text-sm font-medium tracking-widest uppercase mt-1"
                      style={{ color: 'hsl(215 20% 50%)', letterSpacing: '0.2em' }}>
                     Scan · Extract · Simplify
                   </p>
@@ -355,17 +356,17 @@ const Hero = () => {
               </div>
 
               {/* Headline */}
-              <div className="space-y-3">
-                <h2 className="text-3xl lg:text-5xl font-bold leading-tight text-white">
+              <div className="space-y-2">
+                <h2 className="text-2xl lg:text-4xl font-bold leading-tight text-white">
                   Stop the manual entry <span className="text-gradient-brand">nightmare.</span>
                 </h2>
-                <p className="text-lg leading-relaxed max-w-xl" style={{ color: 'hsl(215 20% 60%)' }}>
+                <p className="text-base leading-relaxed max-w-xl" style={{ color: 'hsl(215 20% 60%)' }}>
                   Scan a receipt in seconds and our AI sorts it for you. You check the details and approve them, so mistakes are always easy to fix. Then send a professional invoice or a simple tax summary, all from the same app. Built for gig drivers, small businesses, and fleets across South Africa.
                 </p>
               </div>
 
               {/* Feature pills */}
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+              <div className="hidden sm:flex flex-wrap gap-2 justify-center lg:justify-start">
                 {[
                   { Icon: Scan, text: 'Works on Faded Receipts' },
                   { Icon: FileText, text: 'You Approve Every Scan' },
@@ -374,7 +375,7 @@ const Hero = () => {
                 ].map(({ Icon, text }, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105"
+                    className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 hover:scale-105"
                     style={{
                       background: 'hsl(225 30% 13%)',
                       border: '1px solid hsl(225 30% 20%)',
@@ -389,7 +390,7 @@ const Hero = () => {
                       e.currentTarget.style.color = 'hsl(215 20% 70%)';
                     }}
                   >
-                    <Icon className="w-4 h-4" style={{ color: 'hsl(32 98% 52%)' }} />
+                    <Icon className="w-3.5 h-3.5" style={{ color: 'hsl(32 98% 52%)' }} />
                     {text}
                   </div>
                 ))}
@@ -397,55 +398,80 @@ const Hero = () => {
 
               {/* CTA Buttons */}
               <div
-                className={`flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                className={`flex flex-col items-center lg:items-start gap-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{ transitionDelay: '400ms' }}
               >
-                {/* Primary: Download on Google Play */}
-                <a
-                  href={PLAY_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(32 98% 52%), hsl(38 100% 58%))',
-                    color: 'hsl(222 84% 5%)',
-                    boxShadow: '0 8px 32px hsl(32 98% 52% / 0.35), 0 2px 8px hsl(32 98% 52% / 0.2)',
-                  }}
-                >
-                  <GooglePlayIcon />
-                  <div className="text-left">
-                    <div className="text-xs font-medium opacity-75 leading-none mb-0.5">Download on</div>
-                    <div className="text-base font-bold leading-none">Google Play</div>
-                  </div>
-                  <ArrowRight className="w-5 h-5 ml-auto group-hover:translate-x-1 transition-transform" />
-                </a>
+                <div className="flex flex-wrap items-center gap-3 justify-center lg:justify-start">
+                  {/* Primary: Download on Google Play */}
+                  <a
+                    href={PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+                    style={{
+                      background: 'linear-gradient(135deg, hsl(32 98% 52%), hsl(38 100% 58%))',
+                      color: 'hsl(222 84% 5%)',
+                      boxShadow: '0 8px 32px hsl(32 98% 52% / 0.35), 0 2px 8px hsl(32 98% 52% / 0.2)',
+                    }}
+                  >
+                    <GooglePlayIcon />
+                    <div className="text-left">
+                      <div className="text-[10px] font-medium opacity-75 leading-none mb-0.5">Download on</div>
+                      <div className="text-sm font-bold leading-none">Google Play</div>
+                    </div>
+                  </a>
 
-                {/* Secondary: Learn More */}
-                <button
-                  className="group flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:scale-105"
-                  style={{
-                    background: 'hsl(225 30% 13%)',
-                    border: '1px solid hsl(225 30% 22%)',
-                    color: 'hsl(215 20% 75%)',
-                  }}
-                  onClick={() => document.getElementById('howitworks')?.scrollIntoView({ behavior: 'smooth' })}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'hsl(186 95% 42% / 0.5)';
-                    e.currentTarget.style.color = 'hsl(186 95% 55%)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'hsl(225 30% 22%)';
-                    e.currentTarget.style.color = 'hsl(215 20% 75%)';
-                  }}
-                >
-                  See How It Works
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                  {/* iPhone: TestFlight beta */}
+                  <a
+                    href={TESTFLIGHT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+                    style={{
+                      background: 'hsl(225 30% 13%)',
+                      border: '1px solid hsl(186 95% 42% / 0.4)',
+                      color: 'white',
+                    }}
+                  >
+                    <Smartphone className="w-6 h-6" style={{ color: 'hsl(186 95% 42%)' }} />
+                    <div className="text-left">
+                      <div className="text-[10px] font-medium leading-none mb-0.5" style={{ color: 'hsl(186 95% 55%)' }}>Try free on</div>
+                      <div className="text-sm font-bold leading-none">iPhone (Beta)</div>
+                    </div>
+                  </a>
+
+                  {/* Secondary: Learn More */}
+                  <button
+                    className="group flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105"
+                    style={{
+                      background: 'hsl(225 30% 13%)',
+                      border: '1px solid hsl(225 30% 22%)',
+                      color: 'hsl(215 20% 75%)',
+                    }}
+                    onClick={() => document.getElementById('howitworks')?.scrollIntoView({ behavior: 'smooth' })}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'hsl(186 95% 42% / 0.5)';
+                      e.currentTarget.style.color = 'hsl(186 95% 55%)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'hsl(225 30% 22%)';
+                      e.currentTarget.style.color = 'hsl(215 20% 75%)';
+                    }}
+                  >
+                    See How It Works
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+
+                {/* Plain-English TestFlight explainer, for people who've never heard of it */}
+                <p className="text-[11px] max-w-md text-center lg:text-left" style={{ color: 'hsl(215 20% 45%)' }}>
+                  New to iPhone testing? "Try free on iPhone" opens Apple's free TestFlight app (install it if asked), then just tap "Install" to get Pampiri.
+                </p>
               </div>
 
               {/* Trust bar */}
               <div
-                className="flex flex-wrap items-center gap-6 pt-2 justify-center lg:justify-start"
+                className="hidden sm:flex flex-wrap items-center gap-6 justify-center lg:justify-start"
                 style={{ color: 'hsl(215 20% 45%)' }}
               >
                 <div className="flex items-center gap-2 text-sm">
@@ -561,19 +587,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* ── Scroll Indicator ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 animate-bounce">
-        <span className="text-xs tracking-widest uppercase" style={{ color: 'hsl(215 20% 40%)' }}>Scroll</span>
-        <div
-          className="w-5 h-9 rounded-full flex justify-center pt-2"
-          style={{ border: '1px solid hsl(225 30% 25%)' }}
-        >
-          <div
-            className="w-1 h-2.5 rounded-full animate-pulse"
-            style={{ background: 'hsl(32 98% 52%)' }}
-          />
-        </div>
-      </div>
     </section>
   );
 };

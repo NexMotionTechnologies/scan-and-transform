@@ -1,3 +1,4 @@
+import { useSeo } from '@/hooks/use-seo';
 import AnnouncementBanner from '@/components/AnnouncementBanner';
 import Hero from '@/components/Hero';
 import HowItWorks from '@/components/HowItWorks';
@@ -12,6 +13,13 @@ import ScrollToTop from '@/components/ScrollToTop';
 import CookieConsent from '@/components/CookieConsent';
 
 const Index = () => {
+  useSeo({
+    title: 'Pampiri – AI Receipt Scanner for South Africa | Scan, Extract, Simplify',
+    description:
+      "Turn receipts into organised data in seconds with AI. Built for gig drivers, small businesses & fleets across South Africa. Free on Google Play, now in beta on iPhone via TestFlight.",
+    path: '/',
+  });
+
   return (
     <div className="min-h-screen" style={{ background: 'hsl(225, 35%, 6%)' }}>
       <Hero />

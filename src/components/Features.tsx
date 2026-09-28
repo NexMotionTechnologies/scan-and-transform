@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Camera, Brain, Zap, UserCheck, MapPin, Landmark, TrendingUp, Users, Clock } from 'lucide-react';
+import { Camera, Brain, Zap, UserCheck, MapPin, Landmark, TrendingUp, Users, Clock, Bell, Share2, ShieldCheck, RotateCcw, Compass, FileDown, LogIn, ClipboardCheck } from 'lucide-react';
 
 const features = [
   {
@@ -55,6 +55,49 @@ const features = [
     accentColor: 'hsl(38 100% 55%)',
     glowColor: 'hsl(38 100% 55% / 0.2)',
     borderColor: 'hsl(38 100% 55% / 0.3)',
+  },
+];
+
+const moreFeatures = [
+  {
+    Icon: Bell,
+    title: 'Instant Alerts',
+    description: 'Get a notification the moment a scan is done, or if you\'re about to go over budget.',
+  },
+  {
+    Icon: Share2,
+    title: 'Team Activity Feed',
+    description: 'Business accounts see everything the whole team has scanned, all in one place.',
+  },
+  {
+    Icon: ShieldCheck,
+    title: 'Your Data Stays Private',
+    description: 'We never use your receipts to train AI. Your information is yours, full stop.',
+  },
+  {
+    Icon: RotateCcw,
+    title: 'Never Lose a Credit',
+    description: 'If a scan doesn\'t work out, we give your credit straight back. No asking required.',
+  },
+  {
+    Icon: Compass,
+    title: 'Friendly First-Time Tour',
+    description: 'A short, guided walkthrough shows you around the app the first time you open it.',
+  },
+  {
+    Icon: FileDown,
+    title: 'Your Data, Your Choice',
+    description: 'Download a full copy of everything, or delete your account completely, any time.',
+  },
+  {
+    Icon: LogIn,
+    title: 'One-Tap Sign In',
+    description: 'Skip the long forms. Sign in instantly with your Google or Apple account.',
+  },
+  {
+    Icon: ClipboardCheck,
+    title: 'Fleet Vehicle Tracker',
+    description: 'Keep every vehicle on record, and decide if receipts need your sign-off or post automatically.',
   },
 ];
 
@@ -249,6 +292,41 @@ const Features = () => {
                 <span className="text-sm font-medium" style={{ color: 'hsl(215 20% 45%)' }}>
                   {label}
                 </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* More reasons - compact list, simple and scannable */}
+        <div className="mt-20 max-w-5xl mx-auto">
+          <h3
+            className="text-2xl lg:text-3xl font-black text-center mb-10 text-white"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            And There's <span className="text-gradient-amber">Even More</span>
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {moreFeatures.map(({ Icon, title, description }, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center lg:items-start text-center lg:text-left gap-3 p-5 rounded-2xl"
+                style={{
+                  background: 'hsl(222 30% 11%)',
+                  border: '1px solid hsl(225 30% 18%)',
+                }}
+              >
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'hsl(32 98% 52% / 0.12)', border: '1px solid hsl(32 98% 52% / 0.25)' }}
+                >
+                  <Icon className="w-5 h-5" style={{ color: 'hsl(32 98% 55%)' }} strokeWidth={2} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white mb-1">{title}</h4>
+                  <p className="text-xs leading-relaxed" style={{ color: 'hsl(215 20% 52%)' }}>
+                    {description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
