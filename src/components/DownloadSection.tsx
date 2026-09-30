@@ -1,14 +1,20 @@
-import { Download, Smartphone, Zap, Target, ShieldCheck, ArrowRight, Star } from 'lucide-react';
+import { Download, Zap, Target, ShieldCheck, ArrowRight, Star } from 'lucide-react';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nexmotiontechnologies.pampiri';
 const TESTFLIGHT_URL = 'https://testflight.apple.com/join/TtMntrZh';
 
 const GooglePlayIcon = () => (
+    <svg viewBox="0 0 28 32" className="w-7 h-7">
+        <path d="M13.54 15.28.12 29.34a3.64 3.64 0 0 0 5.33 2.16l15.1-8.6z" fill="#EA4335" />
+        <path d="m27.11 12.89-6.53-3.74-7.35 6.45 7.38 7.28 6.48-3.7a3.55 3.55 0 0 0 0-6.29z" fill="#FBBC04" />
+        <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285F4" />
+        <path d="m13.64 16 6.94-6.85L5.5.51A3.72 3.72 0 0 0 3.63 0 3.64 3.64 0 0 0 .12 2.65Z" fill="#34A853" />
+    </svg>
+);
+
+const AppleIcon = () => (
     <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
-        <path d="M3.18 23.76a2 2 0 0 1-.86-.21 2.05 2.05 0 0 1-1.1-1.84V2.29A2.05 2.05 0 0 1 2.32.45a2 2 0 0 1 2.12.26l13.47 9.73-2.5 2.5L3.18 23.76z" />
-        <path d="m17.66 12.56-2.74 2.74 2.74 1.98 3.07-1.76a1.16 1.16 0 0 0 0-2l-3.07-1.76-.99.8z" opacity=".6" />
-        <path d="m3.18 23.76 12.23-8.82-2.26-2.26L3.18 23.76z" opacity=".4" />
-        <path d="m3.18.24 9.97 9.97-2.26 2.26L3.18.24z" opacity=".4" />
+        <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zm3.415-3.16c.84-1.012 1.402-2.427 1.245-3.832-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.271 3.714 1.338.104 2.715-.688 3.558-1.7z" />
     </svg>
 );
 
@@ -135,7 +141,7 @@ const DownloadSection = () => {
                                     minWidth: '240px',
                                 }}
                             >
-                                <Smartphone className="w-7 h-7" style={{ color: 'hsl(186 95% 42%)' }} />
+                                <span style={{ color: 'hsl(186 95% 42%)' }}><AppleIcon /></span>
                                 <div className="text-left">
                                     <div className="text-xs font-medium leading-none mb-1" style={{ color: 'hsl(186 95% 55%)' }}>iOS Beta via</div>
                                     <div className="text-lg font-black leading-none text-white">TestFlight</div>
